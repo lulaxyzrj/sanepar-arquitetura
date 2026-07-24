@@ -166,7 +166,7 @@ Fonte: [`../timeline/CRN_ENG_OBS_SANEPAR_V0 1.xml`](../timeline/CRN_ENG_OBS_SANE
 
 **Frentes de execução (pós Design Sprint):**
 
-| Frente | Janela | Offer Forge |
+| Frente | Janela | Oferta Eng |
 |--------|--------|-------------|
 | Discovery e Arquitetura | 2026-08-19 → 2026-09-03 | — |
 | Ingestão e Pipelines | 2026-09-04 → 2026-10-05 | data-journey |
