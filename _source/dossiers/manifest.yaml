@@ -6,8 +6,8 @@ pages:
     icon: workflow
     order: 20
   - file: dossie-telemetria.html
-    title: Dossiê Técnico — Dados & IA
-    navLabel: Dossiê Dados & IA
+    title: Dossiê Técnico — Dados, API & IA
+    navLabel: Dossiê Dados, API & IA
     icon: file-text
     order: 72
 projects:
