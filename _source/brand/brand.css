@@ -120,3 +120,12 @@ body.brand-sanepar .page-header-icon {
 body.brand-sanepar .hero {
   border-top: 4px solid #0c97ed;
 }
+
+body.brand-sanepar .eng-section-logo {
+  width: 24px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
