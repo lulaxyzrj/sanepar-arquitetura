@@ -89,8 +89,8 @@ body.brand-sanepar a.brand-sanepar {
 body.brand-sanepar .brand-sanepar-plate {
   display: inline-block;
   background: #fff;
-  padding: 0.55rem 0.7rem;
-  border-radius: 8px;
+  padding: 0.35rem 0.45rem;
+  border-radius: 6px;
   border: 1px solid #cfe3f5;
   line-height: 0;
   box-shadow: 0 1px 2px rgba(8, 98, 173, 0.08);
@@ -98,7 +98,7 @@ body.brand-sanepar .brand-sanepar-plate {
 
 body.brand-sanepar .brand-sanepar-plate img {
   display: block;
-  width: 168px;
+  width: 96px;
   max-width: 100%;
   height: auto;
   max-height: none;
@@ -106,7 +106,7 @@ body.brand-sanepar .brand-sanepar-plate img {
 
 body.brand-sanepar .footer-logo-transpetro,
 body.brand-sanepar .footer-brand img {
-  width: 120px;
+  width: 64px;
   max-width: 100%;
   height: auto;
 }
