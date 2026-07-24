@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dossiê Técnico — Dados &amp; IA PE 1050/2026 | SANEPAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/brand/brand.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });</script>
+  <style>
+    .dossier-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 1.5rem; }
+    .dossier-meta span {
+      background: #e1effd; color: #0862ad; border: 1px solid #b7d4eb;
+      padding: 0.25rem 0.65rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600;
+    }
+    .page-header-icon { background: #0862ad; }
+    .offer-callout { border-left: 4px solid #0862ad; }
+    .evidence-img { max-width: 100%; border: 1px solid #cbd5e1; border-radius: 6px; margin: 0.5rem 0; }
+    figcaption { font-size: 0.9rem; color: #475569; margin-top: 0.35rem; }
+  </style>
+</head>
+<body class="brand-sanepar">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-branding">
+          <a href="index.html" class="brand-sanepar" aria-label="SANEPAR">
+            <span class="brand-sanepar-plate"><img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" width="128" height="auto"></span></a>
+          <p class="sidebar-brand">Data · API · ML</p>
+          <p class="sidebar-subtitle">Telemetria · DHuO · PE 1050/2026 · v0.1</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <p class="nav-section-title">Documentação</p>
+        <a href="index.html" class="nav-link"><i data-lucide="layout-dashboard" class="icon icon-nav"></i><span>Visão Geral</span></a>
+        <a href="capacidades-negocio.html" class="nav-link"><i data-lucide="layers" class="icon icon-nav"></i><span>Domínios e Capacidades</span></a>
+        <a href="arquitetura-proposta.html" class="nav-link"><i data-lucide="workflow" class="icon icon-nav"></i><span>Arquitetura Proposta</span></a>
+        <a href="data-journey.html" class="nav-link"><i data-lucide="database" class="icon icon-nav"></i><span>Data Journey</span></a>
+        <a href="api-journey.html" class="nav-link"><i data-lucide="plug-zap" class="icon icon-nav"></i><span>API Journey</span></a>
+        <a href="ai-journey.html" class="nav-link"><i data-lucide="route" class="icon icon-nav"></i><span>AI Journey</span></a>
+        <a href="dossie-telemetria.html" class="nav-link"><i data-lucide="file-text" class="icon icon-nav"></i><span>Dossiê Dados & IA</span></a>
+        <a href="cronograma-pe1050.html" class="nav-link"><i data-lucide="calendar-range" class="icon icon-nav"></i><span>Cronograma PE 1050</span></a>
+      </nav>
+    </aside>
+    <div class="sidebar-overlay"></div>
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="menu-toggle" aria-label="Menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <nav class="breadcrumb"><a href="index.html">SANEPAR</a> / <strong>Dossiê Dados &amp; IA</strong></nav>
+        <span class="doc-version">v0.1 · Jul 2026</span>
+      </header>
+      <main class="content">
+
+        <div class="page-header">
+          <div class="page-header-icon"><i data-lucide="file-text" class="icon"></i></div>
+          <h1>Dossiê Técnico — Dados &amp; IA</h1>
+          <p class="lead">Solução integrada de dados, APIs, analytics e IA — telemetria em nuvem. Contrato assinado 2026-06-30 · consolidação 2026-07-24.</p>
+          <div class="dossier-meta">
+            <span>PE 1050/2026</span>
+            <span>DHuO = API Manager</span>
+            <span>API Journey</span>
+            <span>Looker · Vertex</span>
+            <span>5 dashboards</span>
+            <span>2 ML</span>
+            <span>Sustentação 24m</span>
+          </div>
+        </div>
+
+        <div class="callout callout-info offer-callout">
+          <div class="callout-title"><i data-lucide="plug-zap" class="icon"></i>API Journey — DHuO como API Manager</div>
+          <p><strong>Plataforma padrão de gestão e governança de APIs da SANEPAR</strong> · Entrega: <strong>SaaS</strong>. Oferta Forge: <a href="api-journey.html"><strong>api-journey</strong></a>.</p>
+          <p>Todas as APIs da SANEPAR, independentemente do método HTTP, devem passar pelo DHuO para governança, controle de acessos, volumetria e throughput.
+</p>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="route" class="icon icon-section"></i>Ofertas Forge</h2>
+        <div class="table-wrapper">
+          <table class="trace-table"><thead><tr><th>Offer</th><th>Papel</th></tr></thead>
+          <tbody><tr><td><a href="api-journey.html"><code>api-journey</code></a></td><td>DHuO como API Manager corporativo — governança de ~150 APIs</td></tr><tr><td><a href="data-journey.html"><code>data-journey</code></a></td><td>Ingestão, lakehouse, histórico, streaming, catálogo</td></tr><tr><td><a href="ai-journey.html"><code>ai-journey</code></a></td><td>2 modelos preditivos + MLOps + dashboards analíticos</td></tr></tbody></table>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="git-branch" class="icon icon-section"></i>Duas esteiras</h2>
+        <div class="card-grid"><div class="card">
+      <h3>Esteira Analítica</h3>
+      <p>~21 APIs GET</p>
+      <p>Alimenta: dashboards, lakehouse, ml</p>
+      <p></p>
+    </div><div class="card">
+      <h3>Esteira de Proxies / Governança</h3>
+      <p>Publicação e governança das demais APIs no DHuO</p>
+      <p></p>
+      <p>Conectividade e autenticação do endpoint</p>
+    </div></div>
+
+        <h2 class="section-title" id="arquitetura-presales"><i data-lucide="drafting-compass" class="icon icon-section"></i>Arquitetura de referência (pre-sales / RFP)</h2>
+        <p>Visão proposta em módulos GCP: <a href="arquitetura-proposta.html"><strong>Arquitetura Proposta</strong></a> (Pub/Sub · Dataflow · buckets). Diagramas da proposta técnica abaixo — fonte: <code>forge/customers/sanepar/pre-sales/</code>.</p>
+        <div class="table-wrapper">
+          <table class="trace-table">
+            <thead><tr><th>Camada</th><th>Stack</th></tr></thead>
+            <tbody><tr><th>apiManager</th><td>DHuO</td></tr><tr><th>bi</th><td>Looker</td></tr><tr><th>streaming</th><td>Pub/Sub, Dataflow, Confluent Cloud Kafka</td></tr><tr><th>lakehouse</th><td>GCS Bronze/Silver, BigQuery Gold</td></tr><tr><th>transform</th><td>Cloud Composer, Dataproc, dbt Core</td></tr><tr><th>governance</th><td>Dataplex</td></tr><tr><th>ml</th><td>Vertex AI</td></tr><tr><th>genai</th><td>controlada (Studio, Model Garden, RAG, Guardrails)</td></tr></tbody>
+          </table>
+        </div>
+        <figure style="margin:1.25rem 0"><img class="evidence-img" src="assets/pre-sales/Arquitetura_Sanepar_Dados_OT_v2%205.png" alt="Arquitetura integrada GCP" width="960"><figcaption><strong>Arquitetura integrada GCP</strong> — pre-sales / RFP</figcaption></figure><figure style="margin:1.25rem 0"><img class="evidence-img" src="assets/pre-sales/Sanepar_ZoomIN_Ingestao_v2%202.png" alt="Zoom In — Ingestão e Streaming (TR 4.1.4)" width="960"><figcaption><strong>Zoom In — Ingestão e Streaming (TR 4.1.4)</strong> — pre-sales / RFP</figcaption></figure><figure style="margin:1.25rem 0"><img class="evidence-img" src="assets/pre-sales/Sanepar_ZoomIN_ETL_v2%202.png" alt="Zoom In — ETL/ELT (TR 4.1.5)" width="960"><figcaption><strong>Zoom In — ETL/ELT (TR 4.1.5)</strong> — pre-sales / RFP</figcaption></figure>
+
+        <h2 class="section-title" id="volumetria"><i data-lucide="hard-drive" class="icon icon-section"></i>Volumetria — projeção 5 anos</h2>
+        <div class="table-wrapper">
+          <table class="trace-table">
+            <thead><tr><th>Item</th><th>Histórica</th><th>Mensal</th><th>Y1</th><th>Y2</th><th>Y3</th><th>Y4</th><th>Y5</th></tr></thead>
+            <tbody><tr><td><strong>Carga histórica (inicial)</strong><br><span style="font-size:0.85rem;color:#64748b">~30 milhões de medições atuais</span></td><td>1,5 GB</td><td>—</td><td>1,5 GB</td><td>1,5 GB</td><td>1,5 GB</td><td>1,5 GB</td><td>1,5 GB</td></tr>
+<tr><td><strong>Geração — cenário atual</strong><br><span style="font-size:0.85rem;color:#64748b">Base mantida em 1.352 equipamentos</span></td><td>—</td><td>~8,1 GB</td><td>97,2 GB</td><td>194,4 GB</td><td>291,6 GB</td><td>388,8 GB</td><td>486 GB</td></tr>
+<tr><td><strong>Geração — cenário expansão</strong><br><span style="font-size:0.85rem;color:#64748b">Parque expandido para 5.000 equipamentos</span></td><td>—</td><td>~34,5 GB</td><td>414 GB</td><td>828 GB</td><td>1.242 GB</td><td>1.656 GB</td><td>2.070 GB</td></tr></tbody>
+          </table>
+        </div>
+        <p><img class="evidence-img" src="assets/dossiers/volumetria-5anos.png" alt="Volumetria 5 anos" width="960"></p>
+        <div class="table-wrapper">
+          <table class="trace-table"><tbody>
+            <tr><th>Chamadas / mês</th><td>~45,000,000</td></tr>
+            <tr><th>USNs máx / mês</th><td>1600</td></tr>
+            <tr><th>BI usuários / ano</th><td>15 (Looker)</td></tr>
+          </tbody></table>
+        </div>
+
+        <h2 class="section-title" id="cronograma"><i data-lucide="calendar-range" class="icon icon-section"></i>Cronograma (CRN V0 · preliminar)</h2>
+        <p>Extrato MSPDI · <code>SANEPAR_PRELIMINAR_1050/26</code> · 2026-07-01 → 2027-03-24 (execução até 2027-01-26). Detalhe: <a href="cronograma-pe1050.html">cronograma-pe1050.html</a>.</p>
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="info" class="icon"></i>Premissa do CRN</div>
+          <p>Esforço/prazos especulativos até Design Sprint (D1–D5: 2026-08-10 → 2026-08-19). Escopo no CRN: 21 APIs mandatórias + 129 proxies ≈ 150 no DHuO.</p>
+        </div>
+        <div class="table-wrapper">
+          <table class="trace-table">
+            <thead><tr><th>Frente</th><th>Janela</th><th>Offer</th></tr></thead>
+            <tbody>
+              <tr><td>Discovery e Arquitetura</td><td>2026-08-19 → 2026-09-03</td><td>—</td></tr>
+              <tr><td>Ingestão e Pipelines</td><td>2026-09-04 → 2026-10-05</td><td><code>data-journey</code></td></tr>
+              <tr><td>Integração e APIs (DHuO)</td><td>2026-10-06 → 2026-11-13</td><td><code>api-journey</code></td></tr>
+              <tr><td>Integração &amp; MLOps</td><td>2026-11-16 → 2026-12-07</td><td><code>ai-journey</code></td></tr>
+              <tr><td>Governança e Segurança</td><td>2026-12-08 → 2026-12-18</td><td><code>data-journey</code></td></tr>
+              <tr><td>BI e Analytics</td><td>2026-12-21 → 2027-01-04</td><td><code>ai-journey</code></td></tr>
+              <tr><td>QA e Go Live</td><td>2027-01-05 → 2027-01-26</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="brain-circuit" class="icon icon-section"></i>Analytics — 5 dashboards · 2 ML</h2>
+        <div class="card-grid">
+          <div class="card"><h3>Dashboards / Looker</h3><p>5 painéis · centro de controle</p></div>
+          <div class="card"><h3>Vertex MLOps</h3><p>2 modelos + GenAI controlada</p></div>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="lock" class="icon icon-section"></i>Conectividade</h2>
+        <p>VPN Site-to-Site SANEPAR ⇄ Engineering/DHuO/GCP</p>
+        <ul><li>Setup cloud GCP pronto do lado Engineering; VPN pelo cliente pendente (daily)</li><li>Necessário VPC, subnet, peer e rede antes do formulário VPN</li></ul>
+
+        <h2 class="section-title"><i data-lucide="list-checks" class="icon icon-section"></i>Premissas</h2>
+        <ul><li>DHuO é a plataforma corporativa de API Management (API Journey)</li><li>Duas esteiras: analítica (GET) e proxies (governança)</li><li>Sem integração direta OT/SCADA de controle</li><li>Pub/Sub proposto como desacoplamento — validar formalmente</li><li>Deploy elástico (menor tier inicial; monitorar USNs)</li></ul>
+
+        <h2 class="section-title"><i data-lucide="alert-triangle" class="icon icon-section"></i>Riscos</h2>
+        <div class="card-grid"><div class="card"><h3>R1 — Contratos técnicos das APIs GET incompletos</h3><p>Aceite de dashboards/ML depende dos contratos das ~21 APIs analíticas</p></div><div class="card"><h3>R2 — Misturar aceite analítico com proxies operacionais</h3><p>Pendências de proxies não devem travar dashboards/ML</p></div><div class="card"><h3>R3 — Conectividade VPN</h3><p>VPC/subnet/peer e fechamento VPN pelo cliente</p></div><div class="card"><h3>R4 — Sizing e custos ociosos</h3><p>Timing de infra vs faturamento; USNs</p></div><div class="card"><h3>R5 — Licenciamento Looker / BI</h3><p>Embedding, SSO, compras</p></div><div class="card"><h3>R6 — Definição incompleta dos demais dashboards e ML</h3><p>Clareza no 1º painel; faltam demais painéis e 2 modelos</p></div></div>
+
+        <h2 class="section-title"><i data-lucide="activity" class="icon icon-section"></i>Situação atual</h2>
+        <ul><li>Separação esteira analítica vs proxies DHuO</li><li>Contratos das APIs GET analíticas</li><li>Fechamento VPN</li><li>Definição dos 5 dashboards e 2 modelos ML</li><li>Validação Pub/Sub / ingestão</li><li>Licenciamento BI</li></ul>
+
+        <h2 class="section-title"><i data-lucide="flag" class="icon icon-section"></i>Conclusão</h2>
+        <p>Projeto de gestão de APIs (DHuO / API Journey), engenharia de dados (Data Journey) e analytics/IA (AI Journey) em GCP. Decisão-chave de HLD: separar esteira analítica (APIs GET → Pub/Sub → lakehouse → 5 dashboards + 2 ML) da esteira de proxies no DHuO (~150 APIs governadas).
+</p>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="folder" class="icon"></i>Fontes</div>
+          <p>Narrativa: <a href="dossie_tecnico_sanepar_dados_ia.md">dossie_tecnico_sanepar_dados_ia.md</a> ·
+          Pre-sales: <a href="assets/pre-sales/README.md">assets/pre-sales/</a> ·
+          Cronograma: <a href="cronograma-pe1050.html">cronograma-pe1050.html</a> ·
+          <a href="api-journey.html">API Journey</a></p>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" class="footer-logo-transpetro" width="80">
+        </div>
+        <p class="footer-copy">Dossiê Dados &amp; IA — PE 1050/2026 · DHuO API Manager</p>
+        <div class="brand-engineering" title="Metodologia Engineering">
+          <img src="assets/brand/engineering-icon-dark.svg" alt="Engineering" width="16" height="14">
+          <span>Metodologia Engineering</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/icons.js"></script>
+</body>
+</html>

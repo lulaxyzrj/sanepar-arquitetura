@@ -1,0 +1,25 @@
+# Technical dossiers — real engagement projects (not generic journey marketing).
+pages:
+  - file: arquitetura-proposta.html
+    title: Arquitetura Proposta — GCP
+    navLabel: Arquitetura Proposta
+    icon: workflow
+    order: 20
+  - file: dossie-telemetria.html
+    title: Dossiê Técnico — Dados & IA
+    navLabel: Dossiê Dados & IA
+    icon: file-text
+    order: 72
+projects:
+  - id: pe-1050-2026-telemetria
+    title: SANEPAR Dados & IA — PE 1050/2026
+    process: PE 1050/2026
+    status: in_progress
+    factsFile: pe-1050-2026-telemetria.yaml
+    narrativeFile: dossie_tecnico_sanepar_dados_ia.md
+    page: dossie-telemetria.html
+    timelineRef: ../timeline/manifest.yaml
+    offers:
+      - api-journey   # DHuO = API Manager
+      - data-journey
+      - ai-journey

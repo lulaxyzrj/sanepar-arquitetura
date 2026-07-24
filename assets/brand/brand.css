@@ -1,0 +1,122 @@
+/* SANEPAR brand — https://www.sanepar.com.br/ institutional blues
+   Light sidebar (site-like) + remapped catalog tokens. */
+
+:root,
+body.brand-sanepar {
+  --color-petrobras-green: #0862ad;
+  --color-petrobras-green-dark: #0b5ea8;
+  --color-petrobras-yellow: #0c97ed;
+  --color-petrobras-yellow-soft: #e1effd;
+  --color-petrobras-orange: #007bc6;
+  --color-petrobras-blue: #0071b8;
+  --color-petrobras-blue-dark: #144b78;
+  --color-petrobras-blue-light: #e1effd;
+
+  --color-biz-domain: #e1effd;
+
+  --color-primary: #0862ad;
+  --color-primary-light: #1f86c7;
+  --color-accent: #0c97ed;
+  --color-accent-light: #e1effd;
+  --color-link: #0b5ea8;
+  --color-primary-subtle: #e8f4fc;
+  --color-ok: #0b5ea8;
+  --color-ok-bg: #e1effd;
+
+  --shadow-sm: 0 1px 3px rgba(8, 98, 173, 0.1);
+  --shadow-md: 0 4px 12px rgba(8, 98, 173, 0.14);
+}
+
+/* —— Sidebar: light surface (logo + links readable) —— */
+body.brand-sanepar .sidebar {
+  background: #ffffff;
+  color: #0b5ea8;
+  border-right: 1px solid #cfe3f5;
+  box-shadow: 1px 0 0 rgba(8, 98, 173, 0.06);
+}
+
+body.brand-sanepar .sidebar-header {
+  border-bottom: 1px solid #d6e8f6;
+}
+
+body.brand-sanepar .sidebar-brand {
+  color: #144b78;
+}
+
+body.brand-sanepar .sidebar-subtitle {
+  color: #5c7a96;
+  opacity: 1;
+}
+
+body.brand-sanepar .nav-section-title {
+  color: #0862ad;
+  opacity: 0.75;
+}
+
+body.brand-sanepar .nav-link {
+  color: #1a3a56;
+}
+
+body.brand-sanepar .nav-link .icon-nav {
+  color: #0862ad;
+  opacity: 0.9;
+}
+
+body.brand-sanepar .nav-link:hover {
+  background: #e8f4fc;
+  color: #0862ad;
+}
+
+body.brand-sanepar .nav-link.active {
+  background: #e1effd;
+  color: #0862ad;
+  border-left-color: #0c97ed;
+  font-weight: 600;
+}
+
+body.brand-sanepar .nav-link.active .icon-nav {
+  color: #0862ad;
+  opacity: 1;
+}
+
+/* —— Logo plate (blue mark needs white ground) —— */
+body.brand-sanepar a.brand-sanepar {
+  display: block;
+  line-height: 0;
+  text-decoration: none;
+}
+
+body.brand-sanepar .brand-sanepar-plate {
+  display: inline-block;
+  background: #fff;
+  padding: 0.55rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #cfe3f5;
+  line-height: 0;
+  box-shadow: 0 1px 2px rgba(8, 98, 173, 0.08);
+}
+
+body.brand-sanepar .brand-sanepar-plate img {
+  display: block;
+  width: 168px;
+  max-width: 100%;
+  height: auto;
+  max-height: none;
+}
+
+body.brand-sanepar .footer-logo-transpetro,
+body.brand-sanepar .footer-brand img {
+  width: 120px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* —— Hero stays institutional blue —— */
+body.brand-sanepar .hero,
+body.brand-sanepar .page-header-icon {
+  background: linear-gradient(135deg, #0862ad 0%, #0b5ea8 55%, #144b78 100%);
+}
+
+body.brand-sanepar .hero {
+  border-top: 4px solid #0c97ed;
+}

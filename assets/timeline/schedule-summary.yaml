@@ -1,0 +1,190 @@
+id: crn-eng-obs-sanepar-v0
+sourceFile: CRN_ENG_OBS_SANEPAR_V0 1.xml
+mspdi: true
+project:
+  name: CRN_ENG_OBS_SANEPAR_V0.xml
+  title: HEKTOR_Gestao_Obras-Cronograma_V10-2016_06_22-CR01-B
+  wbsRoot: SANEPAR_PRELIMINAR_1050/26
+  company: Accenture
+  author: DIR\henrique.c.alves
+  templateHeritage: HEKTOR/Accenture (metadados do XML; conteúdo = SANEPAR PE 1050/26)
+  start: '2026-07-01'
+  finish: '2027-03-24'
+  baselineNote: 'Baseline V1: 22/07/2026 (rótulo WBS 1.1)'
+  lastSaved: '2026-07-23'
+  status: preliminar
+  disclaimer: Cronograma preliminar — esforço/prazos especulativos até Design Sprints; nova versão após
+    escopo real.
+scopeAssumptions:
+- 21 APIs iniciais mandatórias para 5 dashboards + 2 ML
+- 129 proxies adicionais (total ~150 APIs no DHuO)
+- Projeto Executivo ~80% neste CRN; complementar com Plano de Projeto e Mapa de Riscos
+phases:
+- wbs: 1.1.1
+  name: Premissas
+  start: '2026-07-06'
+  finish: '2026-07-06'
+- wbs: 1.1.2
+  name: Fase de Iniciação Projeto
+  start: '2026-07-06'
+  finish: '2026-07-21'
+- wbs: 1.1.3
+  name: Fase de Planejamento
+  start: '2026-07-21'
+  finish: '2026-08-04'
+- wbs: 1.1.4
+  name: Fase de Execução do Projeto
+  start: '2026-07-06'
+  finish: '2027-01-26'
+- wbs: 1.1.5
+  name: Final - Encerramento
+  start: '2026-07-01'
+  finish: '2027-02-11'
+- wbs: 1.1.6
+  name: Acompanhamento e Gestão
+  start: '2026-07-29'
+  finish: '2026-08-10'
+workstreams:
+- wbs: 1.1.4.2.1
+  name: Discovery e Arquitetura
+  start: '2026-08-19'
+  finish: '2026-09-03'
+- wbs: 1.1.4.2.2
+  name: Ingestão e Pipelines
+  start: '2026-09-04'
+  finish: '2026-10-05'
+- wbs: 1.1.4.2.3
+  name: Integração e APIs
+  start: '2026-10-06'
+  finish: '2026-11-13'
+- wbs: 1.1.4.2.4
+  name: Integração & MLOPS
+  start: '2026-11-16'
+  finish: '2026-12-07'
+- wbs: 1.1.4.2.5
+  name: Governança e Segurança
+  start: '2026-12-08'
+  finish: '2026-12-18'
+- wbs: 1.1.4.2.6
+  name: BI e Analytics
+  start: '2026-12-21'
+  finish: '2027-01-04'
+- wbs: 1.1.4.2.7
+  name: QA e Go Live
+  start: '2027-01-05'
+  finish: '2027-01-26'
+designSprint:
+  window:
+    start: '2026-08-10'
+    finish: '2026-08-19'
+  milestones:
+  - id: D1
+    date: '2026-08-10'
+    name: Conclusão do Entendimento e Alinhamento
+  - id: D2
+    date: '2026-08-12'
+    name: Conclusão do Brainstorming
+  - id: D3
+    date: '2026-08-14'
+    name: Aprovação do Escopo Definitivo
+  - id: D4
+    date: '2026-08-18'
+    name: Entrega dos Protótipos
+  - id: D5
+    date: '2026-08-19'
+    name: Validação Final do Design Sprint
+keyMilestones:
+- wbs: 1.1.1
+  name: Premissas
+  date: '2026-07-06'
+- wbs: 1.1.1.5
+  name: Milestone - Premissas contempladas
+  date: '2026-07-06'
+- wbs: 1.1.2.4
+  name: Milestone - Projeto Habilitado para início
+  date: '2026-07-21'
+- wbs: 1.1.3.1.4
+  name: Milestone - Submeter documentação à aprovação do GP do cliente [CRN, DPP, PRO e PFP]
+  date: '2026-07-24'
+- wbs: 1.1.3.2.1.2
+  name: Milestone - Validar conteúdo com Stakeholders
+  date: '2026-08-03'
+- wbs: 1.1.4.1.2.8
+  name: Final D1 - Conclusão do Entendimento e Alinhamento
+  date: '2026-08-10'
+- wbs: 1.1.4.1.2.15
+  name: Final D2 - Conclusão do Brainstorming
+  date: '2026-08-12'
+- wbs: 1.1.4.1.2.23
+  name: Final D3 - Aprovação do Escopo Definitivo
+  date: '2026-08-14'
+- wbs: 1.1.4.1.2.32
+  name: Final D4 - Entrega dos Protótipos
+  date: '2026-08-18'
+- wbs: 1.1.4.1.2.39
+  name: Final D5 - Validação Final do Design Sprint
+  date: '2026-08-19'
+taskCount: 278
+resourceRoles:
+- ENG-GP
+- ENG_PMO
+- ENG-GOV
+- ENG-PMC
+- ENG_ARQ
+- ENG-QLD
+- CLI_GP
+- CLI_GER_TI
+- CLI_KEY_USR*
+- CLI_INFRA_TI
+- CLI_GMUD
+forgeOffers:
+  api-journey:
+  - 1.1.4.2.3 Integração e APIs
+  - DHuO gateway
+  - 129 proxies + 21 APIs
+  data-journey:
+  - 1.1.4.2.2 Ingestão e Pipelines
+  - Data Lake + DW
+  - migração histórica
+  ai-journey:
+  - 1.1.4.2.4 Integração & MLOPS
+  - 1.1.4.2.6 BI e Analytics
+  - 5 dashboards + 2 ML
+levantamentoEscopo:
+- wbs: 1.1.4.1.1
+  name: Entendimentos de Negócio para posterior Homologação / Implantação
+  start: '2026-07-29'
+  finish: '2026-08-07'
+- wbs: 1.1.4.1.2
+  name: Design Sprint Week (Escopo Congelado)
+  start: '2026-07-06'
+  finish: '2026-08-19'
+technicalWindows:
+  infraSetup:
+    start: '2026-08-19'
+    finish: '2026-09-03'
+    note: Ambientes / VPN / GCP / DevOps
+  ingestPipelines:
+    start: '2026-09-04'
+    finish: '2026-10-05'
+    note: Streaming telemetria + ETL/ELT + Lake/DW
+  apisDhuo:
+    start: '2026-10-06'
+    finish: '2026-11-13'
+    note: Integração e APIs / DHuO
+  mlops:
+    start: '2026-11-16'
+    finish: '2026-12-07'
+    note: Integração & MLOps
+  dataGov:
+    start: '2026-12-08'
+    finish: '2026-12-17'
+    note: Governança de Dados + Catálogo
+  biAnalytics:
+    start: '2026-12-21'
+    finish: '2027-01-04'
+    note: BI e Analytics / dashboards
+  stabilizationClose:
+    start: '2027-01-05'
+    finish: '2027-01-26'
+    note: Homologação / estabilização → execução

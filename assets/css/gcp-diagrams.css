@@ -1,0 +1,149 @@
+/* GCP architecture diagrams — Google Cloud Architecture Icons */
+
+.gcp-diagram {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.gcp-diagram-caption {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.75rem;
+  text-align: center;
+}
+
+.gcp-arch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: min(100%, 780px);
+  margin: 0 auto;
+}
+
+.gcp-row {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.gcp-group {
+  flex: 1;
+  min-width: 200px;
+  max-width: 100%;
+  border: 1px dashed #0862ad;
+  background: linear-gradient(180deg, #eef6fc 0%, #fafcff 100%);
+  border-radius: 8px;
+  padding: 0.85rem 1rem 1rem;
+}
+
+.gcp-group-title {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #0862ad;
+  margin: 0 0 0.65rem;
+  text-align: center;
+}
+
+.gcp-nodes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem 1.25rem;
+}
+
+.gcp-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 92px;
+}
+
+.gcp-node-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gcp-node img,
+.gcp-node .gcp-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.gcp-label {
+  font-size: 0.68rem;
+  line-height: 1.3;
+  color: var(--color-text);
+  margin-top: 0.35rem;
+  font-weight: 500;
+}
+
+.gcp-sublabel {
+  font-size: 0.6rem;
+  color: var(--color-text-muted);
+  margin-top: 0.15rem;
+}
+
+.gcp-arrow-row {
+  display: flex;
+  justify-content: center;
+  color: #0862ad;
+  opacity: 0.55;
+  line-height: 1;
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+.gcp-arrow-row svg {
+  width: 20px;
+  height: 20px;
+  stroke: #0862ad;
+  fill: none;
+  stroke-width: 2;
+}
+
+.gcp-flow-lr {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+}
+
+.gcp-flow-lr .gcp-group {
+  flex: 0 1 auto;
+  min-width: 140px;
+}
+
+.gcp-flow-arrow {
+  color: #0862ad;
+  opacity: 0.55;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  padding: 0 0.15rem;
+}
+
+.gcp-path-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0c97ed;
+  background: #e1effd;
+  border-radius: 4px;
+  padding: 0.15rem 0.45rem;
+  margin-bottom: 0.5rem;
+}

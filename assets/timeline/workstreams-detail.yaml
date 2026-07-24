@@ -1,0 +1,97 @@
+1.1.4.2.1 Discovery e Arquitetura:
+- wbs: 1.1.4.2.1.1
+  name: Arquitetura da Plataforma
+  start: '2026-08-19'
+  finish: '2026-08-21'
+  summary: true
+- wbs: 1.1.4.2.1.2
+  name: Setup Cloud / Landing Zone
+  start: '2026-08-21'
+  finish: '2026-08-26'
+  summary: true
+- wbs: 1.1.4.2.1.3
+  name: E3 Setup DevOps / CI/CD / Ambientes
+  start: '2026-08-27'
+  finish: '2026-09-03'
+  summary: true
+1.1.4.2.2 Ingestão e Pipelines:
+- wbs: 1.1.4.2.2.1
+  name: Ingestão Streaming (Telemetria)
+  start: '2026-09-04'
+  finish: '2026-09-17'
+  summary: true
+- wbs: 1.1.4.2.2.2
+  name: ETL/ELT Batch + APIs
+  start: '2026-09-18'
+  finish: '2026-09-18'
+  summary: false
+- wbs: 1.1.4.2.2.3
+  name: Data Lake + Data WareHouse
+  start: '2026-09-21'
+  finish: '2026-10-05'
+  summary: true
+1.1.4.2.3 Integração e APIs:
+- wbs: 1.1.4.2.3.1
+  name: API Gateways + Gestão de APIs
+  start: '2026-10-06'
+  finish: '2026-11-09'
+  summary: true
+- wbs: 1.1.4.2.3.2
+  name: Integração de Sistemas (Telemetria + Legados)
+  start: '2026-11-10'
+  finish: '2026-11-13'
+  summary: true
+1.1.4.2.4 Integração & MLOPS:
+- wbs: 1.1.4.2.4.1
+  name: Setup MLOPS + Pipelines
+  start: '2026-11-16'
+  finish: '2026-11-26'
+  summary: true
+- wbs: 1.1.4.2.4.2
+  name: Modelos Preditivos (Perda / Consumo)
+  start: '2026-11-27'
+  finish: '2026-12-07'
+  summary: true
+1.1.4.2.5 Governança e Segurança:
+- wbs: 1.1.4.2.5.1
+  name: Governança de Dados + Catálogo
+  start: '2026-12-08'
+  finish: '2026-12-17'
+  summary: true
+- wbs: 1.1.4.2.5.2
+  name: Segurança + LGPD + IAM
+  start: '2026-12-18'
+  finish: '2026-12-18'
+  summary: false
+1.1.4.2.6 BI e Analytics:
+- wbs: 1.1.4.2.6.1
+  name: Modelagem Semântica
+  start: '2026-12-21'
+  finish: '2026-12-29'
+  summary: true
+- wbs: 1.1.4.2.6.2
+  name: Dashboards Operacionais
+  start: '2026-12-30'
+  finish: '2026-12-30'
+  summary: false
+- wbs: 1.1.4.2.6.3
+  name: Homologação e Publicação
+  start: '2027-01-04'
+  finish: '2027-01-04'
+  summary: false
+1.1.4.2.7 QA e Go Live:
+- wbs: 1.1.4.2.7.1
+  name: Testes Integrados
+  start: '2027-01-05'
+  finish: '2027-01-14'
+  summary: true
+- wbs: 1.1.4.2.7.2
+  name: Hardening + Performance
+  start: '2027-01-15'
+  finish: '2027-01-18'
+  summary: false
+- wbs: 1.1.4.2.7.3
+  name: GoLive + Transferência
+  start: '2027-01-19'
+  finish: '2027-01-26'
+  summary: true

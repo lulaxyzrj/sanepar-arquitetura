@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Domínios e Capacidades — Data · API · ML | SANEPAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/brand/brand.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });</script>
+  <style>
+    .biz-map { border-top: 4px solid #0862ad; }
+    .biz-map-title::after { background: #0862ad; }
+    .biz-domain-id { background: #0862ad; color: #fff; }
+  </style>
+</head>
+<body class="brand-sanepar">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-branding">
+          <a href="index.html" class="brand-sanepar" aria-label="SANEPAR">
+            <span class="brand-sanepar-plate"><img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" width="128" height="auto"></span></a>
+          <p class="sidebar-brand">Data · API · ML</p>
+          <p class="sidebar-subtitle">Telemetria · DHuO · PE 1050/2026 · v0.1</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <p class="nav-section-title">Documentação</p>
+        <a href="index.html" class="nav-link"><i data-lucide="layout-dashboard" class="icon icon-nav"></i><span>Visão Geral</span></a>
+        <a href="capacidades-negocio.html" class="nav-link"><i data-lucide="layers" class="icon icon-nav"></i><span>Domínios e Capacidades</span></a>
+        <a href="arquitetura-proposta.html" class="nav-link"><i data-lucide="workflow" class="icon icon-nav"></i><span>Arquitetura Proposta</span></a>
+        <a href="data-journey.html" class="nav-link"><i data-lucide="database" class="icon icon-nav"></i><span>Data Journey</span></a>
+        <a href="api-journey.html" class="nav-link"><i data-lucide="plug-zap" class="icon icon-nav"></i><span>API Journey</span></a>
+        <a href="ai-journey.html" class="nav-link"><i data-lucide="route" class="icon icon-nav"></i><span>AI Journey</span></a>
+        <a href="dossie-telemetria.html" class="nav-link"><i data-lucide="file-text" class="icon icon-nav"></i><span>Dossiê Dados & IA</span></a>
+        <a href="cronograma-pe1050.html" class="nav-link"><i data-lucide="calendar-range" class="icon icon-nav"></i><span>Cronograma PE 1050</span></a>
+      </nav>
+    </aside>
+    <div class="sidebar-overlay"></div>
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="menu-toggle" aria-label="Menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <nav class="breadcrumb"><a href="index.html">SANEPAR</a> / <strong>Domínios e Capacidades</strong></nav>
+        <span class="doc-version">v0.1 · Jul 2026</span>
+      </header>
+      <main class="content">
+
+        <div class="page-header">
+          <div class="page-header-icon page-header-icon-orange"><i data-lucide="layers" class="icon"></i></div>
+          <h1>Domínios e Capacidades — Arquitetura de Negócio</h1>
+          <p class="lead"><strong>Fundação de negócio</strong> da arquitetura IA SANEPAR: mapa <strong>TOGAF lite</strong> (Fase B) com domínios estáveis e capacidades rastreáveis para casos de uso GenAI/agentes, intake de arquitetura e entregáveis CEA.</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="info" class="icon"></i>Mapa v0 — validação pendente</div>
+          <p>Rascunho derivado de informações públicas (Estatuto Social, organograma RI, Relato Integrado 2024 e Formulário de Referência). Cobertura: ~346 municípios (água), esgoto em expansão/PPPs, aterros em concessão. Substituir IDs quando o mapa oficial de Arquitetura Corporativa estiver disponível.</p>
+        </div>
+
+        <h2 class="section-title" id="mapa-visual"><i data-lucide="map" class="icon icon-section"></i>Mapa visual — Biz Domains &amp; Capabilities v0</h2>
+        <p>Visão em camadas: <strong>operações core (D1–D3)</strong>, <strong>meio ambiente/SMS (D4)</strong>, <strong>corporativo (D5–D8)</strong>, <strong>habilitadores (D9–D11)</strong> e <strong>jurídico/compliance (D12)</strong>.</p>
+
+        <div class="biz-map" role="img" aria-label="Mapa SANEPAR: doze domínios de negócio">
+          <div class="biz-map-title">SANEPAR — Biz Domains &amp; Capabilities</div>
+          <div class="biz-map-subtitle">Arquitetura de Negócio v0 · TOGAF lite · Jul 2026</div>
+
+          <p class="biz-map-zone-label">Operações core — saneamento</p>
+          <div class="biz-map-grid biz-map-grid-ops">
+            <div class="biz-domain biz-d1">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D1</span>
+                <span class="biz-domain-name">Abastecimento de Água</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d1-01" class="biz-cap" title="CAP-D1-01">Captar e aduzir água bruta</a>
+                <a href="#cap-d1-02" class="biz-cap" title="CAP-D1-02">Tratar e reservar água potável</a>
+                <a href="#cap-d1-03" class="biz-cap" title="CAP-D1-03">Distribuir água e reduzir perdas</a>
+              </div>
+            </div>
+            <div class="biz-domain biz-d2">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D2</span>
+                <span class="biz-domain-name">Esgotamento Sanitário</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d2-01" class="biz-cap" title="CAP-D2-01">Coletar e transportar esgoto</a>
+                <a href="#cap-d2-02" class="biz-cap" title="CAP-D2-02">Tratar e dispor efluentes</a>
+                <a href="#cap-d2-03" class="biz-cap" title="CAP-D2-03">Expandir sistemas e PPPs de esgoto</a>
+              </div>
+            </div>
+            <div class="biz-domain biz-d3">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D3</span>
+                <span class="biz-domain-name">Resíduos Sólidos</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d3-01" class="biz-cap" title="CAP-D3-01">Operar aterros sanitários</a>
+                <a href="#cap-d3-02" class="biz-cap" title="CAP-D3-02">Destinar resíduos e subprodutos</a>
+              </div>
+            </div>
+          </div>
+          <p class="biz-map-zone-label">Transversal — meio ambiente, SMS e recursos hídricos</p>
+          <div class="biz-map-transversal">
+            <div class="biz-domain biz-d4">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D4</span>
+                <span class="biz-domain-name">Meio Ambiente, SMS e Recursos Hídricos</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d4-01" class="biz-cap" title="CAP-D4-01">Gerenciar licenças e outorgas</a>
+                <a href="#cap-d4-02" class="biz-cap" title="CAP-D4-02">Operar SMS e análise de risco</a>
+                <a href="#cap-d4-03" class="biz-cap" title="CAP-D4-03">Proteger mananciais e recursos hídricos</a>
+                <a href="#cap-d4-04" class="biz-cap" title="CAP-D4-04">Executar ação social e sustentabilidade</a>
+              </div>
+            </div>
+          </div>
+          <p class="biz-map-zone-label">Engenharia, comercial e finanças</p>
+          <div class="biz-map-grid biz-map-grid-corp">
+            <div class="biz-domain biz-d5">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D5</span>
+                <span class="biz-domain-name">Engenharia, ativos e investimentos</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d5-01" class="biz-cap" title="CAP-D5-01">Projetar e executar obras</a>
+                <a href="#cap-d5-02" class="biz-cap" title="CAP-D5-02">Gerir ativos e manutenção</a>
+                <a href="#cap-d5-03" class="biz-cap" title="CAP-D5-03">Planejar investimentos e universalização</a>
+              </div>
+            </div>
+            <div class="biz-domain biz-d6">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D6</span>
+                <span class="biz-domain-name">Comercial e atendimento</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d6-01" class="biz-cap" title="CAP-D6-01">Atender e relacionar clientes</a>
+                <a href="#cap-d6-02" class="biz-cap" title="CAP-D6-02">Faturar e arrecadar</a>
+                <a href="#cap-d6-03" class="biz-cap" title="CAP-D6-03">Comunicar e marketing</a>
+              </div>
+            </div>
+            <div class="biz-domain biz-d7">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D7</span>
+                <span class="biz-domain-name">Financeiro e RI</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d7-01" class="biz-cap" title="CAP-D7-01">Operar tesouraria e fluxo de caixa</a>
+                <a href="#cap-d7-02" class="biz-cap" title="CAP-D7-02">Consolidar orçamento e controladoria</a>
+                <a href="#cap-d7-03" class="biz-cap" title="CAP-D7-03">Relacionar investidores e mercado</a>
+              </div>
+            </div>
+            <div class="biz-domain biz-d8">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D8</span>
+                <span class="biz-domain-name">Compras e contratos</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d8-01" class="biz-cap" title="CAP-D8-01">Conduzir licitações e compras</a>
+                <a href="#cap-d8-02" class="biz-cap" title="CAP-D8-02">Administrar contratos e fornecedores</a>
+              </div>
+            </div>
+          </div>
+          <p class="biz-map-zone-label">Habilitadores — pessoas, TI e inovação</p>
+          <div class="biz-map-grid biz-map-grid-enable">
+            <div class="biz-domain biz-d9">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D9</span>
+                <span class="biz-domain-name">Pessoas e organização</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d9-01" class="biz-cap" title="CAP-D9-01">Recrutar e desenvolver pessoas</a>
+                <a href="#cap-d9-02" class="biz-cap" title="CAP-D9-02">Operar departamento pessoal</a>
+              </div>
+            </div>
+            <div class="biz-domain biz-d10">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D10</span>
+                <span class="biz-domain-name">TI e digital</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d10-01" class="biz-cap" title="CAP-D10-01">Operar infraestrutura e suporte digital</a>
+                <a href="#cap-d10-02" class="biz-cap" title="CAP-D10-02">Gerenciar identidade, dados e acessos</a>
+                <a href="#cap-d10-03" class="biz-cap" title="CAP-D10-03">Integrar sistemas via APIs</a>
+                <a href="#cap-d10-04" class="biz-cap" title="CAP-D10-04">Monitorar serviços e incidentes</a>
+              </div>
+            </div>
+            <div class="biz-domain biz-d11">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D11</span>
+                <span class="biz-domain-name">Inovação e novos negócios</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d11-01" class="biz-cap" title="CAP-D11-01">Desenvolver novos negócios e PPPs</a>
+                <a href="#cap-d11-02" class="biz-cap" title="CAP-D11-02">Produzir e comercializar energia/biogás</a>
+                <a href="#cap-d11-03" class="biz-cap" title="CAP-D11-03">Prestação de consultoria e serviços técnicos</a>
+              </div>
+            </div>
+          </div>
+          <p class="biz-map-zone-label">Corporativo — jurídico, regulatório e compliance</p>
+          <div class="biz-map-transversal">
+            <div class="biz-domain biz-d12">
+              <div class="biz-domain-head">
+                <span class="biz-domain-id">D12</span>
+                <span class="biz-domain-name">Jurídico, regulatório e compliance</span>
+              </div>
+              <div class="biz-domain-caps">
+                <a href="#cap-d12-01" class="biz-cap" title="CAP-D12-01">Operar Legal Ops e contencioso</a>
+                <a href="#cap-d12-02" class="biz-cap" title="CAP-D12-02">Assegurar conformidade regulatória (Agepar)</a>
+                <a href="#cap-d12-03" class="biz-cap" title="CAP-D12-03">Gerir riscos, governança e compliance</a>
+                <a href="#cap-d12-04" class="biz-cap" title="CAP-D12-04">Revisar contratos e instrumentos legais</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="git-branch" class="icon icon-section"></i>Rastreabilidade</h2>
+        <div class="mermaid">
+flowchart LR
+  Dom[Dominio D1-D12]
+  Cap[Capacidade CAP-xx]
+  UC[Caso de uso]
+  Ag[Bloco de agente]
+  CEA[CEA e Journeys]
+  Dom --> Cap --> UC --> Ag --> CEA
+        </div>
+
+        <h2 class="section-title" id="dominios"><i data-lucide="building-2" class="icon icon-section"></i>Domínios de negócio v0</h2>
+        <div class="table-wrapper">
+          <table class="trace-table">
+            <thead><tr><th>ID</th><th>Domínio</th><th>Descrição</th></tr></thead>
+            <tbody>
+<tr><td><code>D1</code></td><td><strong>Abastecimento de Água</strong></td><td>Captação (superficial e subterrânea), adução, tratamento, reservação e distribuição de água potável; redução de perdas. <em>(Operações)</em></td></tr>
+<tr><td><code>D2</code></td><td><strong>Esgotamento Sanitário</strong></td><td>Coleta, transporte, tratamento e disposição final de esgotos; expansão de redes e ETEs; PPPs de esgoto. <em>(Operações)</em></td></tr>
+<tr><td><code>D3</code></td><td><strong>Resíduos Sólidos</strong></td><td>Operação de aterros sanitários municipais (concessão/contrato) e destinação de resíduos/subprodutos. <em>(Operações)</em></td></tr>
+<tr><td><code>D4</code></td><td><strong>Meio Ambiente, SMS e Recursos Hídricos</strong></td><td>Proteção ambiental, outorgas/licenças, SMS operacional, drenagem urbana e gestão de mananciais (transversal). <em>(Meio Ambiente e Ação Social)</em></td></tr>
+<tr><td><code>D5</code></td><td><strong>Engenharia, ativos e investimentos</strong></td><td>Estudos, projetos, obras, ciclo de vida de ativos, plano de investimentos e universalização. <em>(Investimentos)</em></td></tr>
+<tr><td><code>D6</code></td><td><strong>Comercial e atendimento</strong></td><td>Relacionamento com clientes, faturamento, arrecadação, canais de atendimento e comunicação. <em>(Comercial)</em></td></tr>
+<tr><td><code>D7</code></td><td><strong>Financeiro e RI</strong></td><td>Tesouraria, controladoria, orçamento, funding e relações com investidores. <em>(Financeira e de Relações com Investidores)</em></td></tr>
+<tr><td><code>D8</code></td><td><strong>Compras e contratos</strong></td><td>Licitações, procurement, fornecedores e ciclo de vida de contratos de bens, serviços e obras. <em>(Administrativa)</em></td></tr>
+<tr><td><code>D9</code></td><td><strong>Pessoas e organização</strong></td><td>RH, capacitação, folha, benefícios e estrutura organizacional. <em>(Administrativa)</em></td></tr>
+<tr><td><code>D10</code></td><td><strong>TI e digital</strong></td><td>Plataformas digitais, dados, integração, cibersegurança e operação de TI. <em>(Administrativa / Inovação)</em></td></tr>
+<tr><td><code>D11</code></td><td><strong>Inovação e novos negócios</strong></td><td>Energia/biogás, valorização de ativos, fibra óptica, consultoria técnica e Plano Diretor de Novos Negócios. <em>(Inovação e Novos Negócios)</em></td></tr>
+<tr><td><code>D12</code></td><td><strong>Jurídico, regulatório e compliance</strong></td><td>Assessoria legal, contencioso, regulação Agepar, LGPD, governança, riscos e compliance. <em>(Jurídica + Governança, Riscos e Compliance)</em></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="section-title" id="capacidades"><i data-lucide="grid-3x3" class="icon icon-section"></i>Catálogo de capacidades</h2>
+        <div class="table-wrapper">
+          <table class="trace-table">
+            <thead><tr><th>ID</th><th>Domínio</th><th>Capacidade</th></tr></thead>
+            <tbody>
+<tr id="cap-d1-01"><td><code class="capability-id">CAP-D1-01</code></td><td><code>D1</code></td><td>Captar e aduzir água bruta</td></tr>
+<tr id="cap-d1-02"><td><code class="capability-id">CAP-D1-02</code></td><td><code>D1</code></td><td>Tratar e reservar água potável</td></tr>
+<tr id="cap-d1-03"><td><code class="capability-id">CAP-D1-03</code></td><td><code>D1</code></td><td>Distribuir água e reduzir perdas</td></tr>
+<tr id="cap-d2-01"><td><code class="capability-id">CAP-D2-01</code></td><td><code>D2</code></td><td>Coletar e transportar esgoto</td></tr>
+<tr id="cap-d2-02"><td><code class="capability-id">CAP-D2-02</code></td><td><code>D2</code></td><td>Tratar e dispor efluentes</td></tr>
+<tr id="cap-d2-03"><td><code class="capability-id">CAP-D2-03</code></td><td><code>D2</code></td><td>Expandir sistemas e PPPs de esgoto</td></tr>
+<tr id="cap-d3-01"><td><code class="capability-id">CAP-D3-01</code></td><td><code>D3</code></td><td>Operar aterros sanitários</td></tr>
+<tr id="cap-d3-02"><td><code class="capability-id">CAP-D3-02</code></td><td><code>D3</code></td><td>Destinar resíduos e subprodutos</td></tr>
+<tr id="cap-d4-01"><td><code class="capability-id">CAP-D4-01</code></td><td><code>D4</code></td><td>Gerenciar licenças e outorgas</td></tr>
+<tr id="cap-d4-02"><td><code class="capability-id">CAP-D4-02</code></td><td><code>D4</code></td><td>Operar SMS e análise de risco</td></tr>
+<tr id="cap-d4-03"><td><code class="capability-id">CAP-D4-03</code></td><td><code>D4</code></td><td>Proteger mananciais e recursos hídricos</td></tr>
+<tr id="cap-d4-04"><td><code class="capability-id">CAP-D4-04</code></td><td><code>D4</code></td><td>Executar ação social e sustentabilidade</td></tr>
+<tr id="cap-d5-01"><td><code class="capability-id">CAP-D5-01</code></td><td><code>D5</code></td><td>Projetar e executar obras</td></tr>
+<tr id="cap-d5-02"><td><code class="capability-id">CAP-D5-02</code></td><td><code>D5</code></td><td>Gerir ativos e manutenção</td></tr>
+<tr id="cap-d5-03"><td><code class="capability-id">CAP-D5-03</code></td><td><code>D5</code></td><td>Planejar investimentos e universalização</td></tr>
+<tr id="cap-d6-01"><td><code class="capability-id">CAP-D6-01</code></td><td><code>D6</code></td><td>Atender e relacionar clientes</td></tr>
+<tr id="cap-d6-02"><td><code class="capability-id">CAP-D6-02</code></td><td><code>D6</code></td><td>Faturar e arrecadar</td></tr>
+<tr id="cap-d6-03"><td><code class="capability-id">CAP-D6-03</code></td><td><code>D6</code></td><td>Comunicar e marketing</td></tr>
+<tr id="cap-d7-01"><td><code class="capability-id">CAP-D7-01</code></td><td><code>D7</code></td><td>Operar tesouraria e fluxo de caixa</td></tr>
+<tr id="cap-d7-02"><td><code class="capability-id">CAP-D7-02</code></td><td><code>D7</code></td><td>Consolidar orçamento e controladoria</td></tr>
+<tr id="cap-d7-03"><td><code class="capability-id">CAP-D7-03</code></td><td><code>D7</code></td><td>Relacionar investidores e mercado</td></tr>
+<tr id="cap-d8-01"><td><code class="capability-id">CAP-D8-01</code></td><td><code>D8</code></td><td>Conduzir licitações e compras</td></tr>
+<tr id="cap-d8-02"><td><code class="capability-id">CAP-D8-02</code></td><td><code>D8</code></td><td>Administrar contratos e fornecedores</td></tr>
+<tr id="cap-d9-01"><td><code class="capability-id">CAP-D9-01</code></td><td><code>D9</code></td><td>Recrutar e desenvolver pessoas</td></tr>
+<tr id="cap-d9-02"><td><code class="capability-id">CAP-D9-02</code></td><td><code>D9</code></td><td>Operar departamento pessoal</td></tr>
+<tr id="cap-d10-01"><td><code class="capability-id">CAP-D10-01</code></td><td><code>D10</code></td><td>Operar infraestrutura e suporte digital</td></tr>
+<tr id="cap-d10-02"><td><code class="capability-id">CAP-D10-02</code></td><td><code>D10</code></td><td>Gerenciar identidade, dados e acessos</td></tr>
+<tr id="cap-d10-03"><td><code class="capability-id">CAP-D10-03</code></td><td><code>D10</code></td><td>Integrar sistemas via APIs</td></tr>
+<tr id="cap-d10-04"><td><code class="capability-id">CAP-D10-04</code></td><td><code>D10</code></td><td>Monitorar serviços e incidentes</td></tr>
+<tr id="cap-d11-01"><td><code class="capability-id">CAP-D11-01</code></td><td><code>D11</code></td><td>Desenvolver novos negócios e PPPs</td></tr>
+<tr id="cap-d11-02"><td><code class="capability-id">CAP-D11-02</code></td><td><code>D11</code></td><td>Produzir e comercializar energia/biogás</td></tr>
+<tr id="cap-d11-03"><td><code class="capability-id">CAP-D11-03</code></td><td><code>D11</code></td><td>Prestação de consultoria e serviços técnicos</td></tr>
+<tr id="cap-d12-01"><td><code class="capability-id">CAP-D12-01</code></td><td><code>D12</code></td><td>Operar Legal Ops e contencioso</td></tr>
+<tr id="cap-d12-02"><td><code class="capability-id">CAP-D12-02</code></td><td><code>D12</code></td><td>Assegurar conformidade regulatória (Agepar)</td></tr>
+<tr id="cap-d12-03"><td><code class="capability-id">CAP-D12-03</code></td><td><code>D12</code></td><td>Gerir riscos, governança e compliance</td></tr>
+<tr id="cap-d12-04"><td><code class="capability-id">CAP-D12-04</code></td><td><code>D12</code></td><td>Revisar contratos e instrumentos legais</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="building" class="icon"></i>Alinhamento às diretorias</div>
+          <p>Os domínios espelham a Diretoria Executiva pública: Operações, Comercial, Investimentos, Financeira/RI, Administrativa, Meio Ambiente e Ação Social, Inovação e Novos Negócios, Jurídica; mais adjuntas de Comunicação/Marketing e Governança, Riscos e Compliance. Regulação setorial: <strong>Agepar</strong>.</p>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="book-open" class="icon icon-section"></i>Fontes públicas</h2>
+        <ul class="icon-list">
+          <li><i data-lucide="link" class="icon list-icon"></i><span><a href="https://ri.sanepar.com.br/docs/Estatuto-Social-Sanepar-2026-04-29-tMtP9Twz.pdf" target="_blank" rel="noopener">Estatuto Social consolidado</a></span></li>
+          <li><i data-lucide="link" class="icon list-icon"></i><span><a href="https://ri.sanepar.com.br/governanca-corporativa/administracao" target="_blank" rel="noopener">Administração / organograma (RI)</a></span></li>
+          <li><i data-lucide="link" class="icon list-icon"></i><span><a href="https://ri.sanepar.com.br/docs/Sanepar-2024-12-31-768DDfgK.pdf" target="_blank" rel="noopener">Relato Integrado 2024</a></span></li>
+          <li><i data-lucide="link" class="icon list-icon"></i><span><a href="https://ri.sanepar.com.br/docs/Formulario-de-Referencia-Sanepar-2025-12-31-kMJqNFRT.pdf" target="_blank" rel="noopener">Formulário de Referência 2025</a></span></li>
+        </ul>
+
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" class="footer-logo-transpetro" width="80">
+        </div>
+        <p class="footer-copy">Data · API · ML — SANEPAR · v0.1</p>
+        <div class="brand-engineering" title="Metodologia Engineering">
+          <img src="assets/brand/engineering-icon-dark.svg" alt="Engineering" width="16" height="14">
+          <span>Metodologia Engineering</span>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/pattern-tooltips.js"></script>
+</body>
+</html>

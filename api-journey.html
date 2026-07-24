@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Journey — Data · API · ML | SANEPAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/brand/brand.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });</script>
+</head>
+<body class="brand-sanepar">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-branding">
+          <a href="index.html" class="brand-sanepar" aria-label="SANEPAR">
+            <span class="brand-sanepar-plate"><img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" width="128" height="auto"></span></a>
+          <p class="sidebar-brand">Data · API · ML</p>
+          <p class="sidebar-subtitle">Telemetria · DHuO · PE 1050/2026 · v0.1</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <p class="nav-section-title">Documentação</p>
+        <a href="index.html" class="nav-link"><i data-lucide="layout-dashboard" class="icon icon-nav"></i><span>Visão Geral</span></a>
+        <a href="capacidades-negocio.html" class="nav-link"><i data-lucide="layers" class="icon icon-nav"></i><span>Domínios e Capacidades</span></a>
+        <a href="arquitetura-proposta.html" class="nav-link"><i data-lucide="workflow" class="icon icon-nav"></i><span>Arquitetura Proposta</span></a>
+        <a href="data-journey.html" class="nav-link"><i data-lucide="database" class="icon icon-nav"></i><span>Data Journey</span></a>
+        <a href="api-journey.html" class="nav-link"><i data-lucide="plug-zap" class="icon icon-nav"></i><span>API Journey</span></a>
+        <a href="ai-journey.html" class="nav-link"><i data-lucide="route" class="icon icon-nav"></i><span>AI Journey</span></a>
+        <a href="dossie-telemetria.html" class="nav-link"><i data-lucide="file-text" class="icon icon-nav"></i><span>Dossiê Dados & IA</span></a>
+        <a href="cronograma-pe1050.html" class="nav-link"><i data-lucide="calendar-range" class="icon icon-nav"></i><span>Cronograma PE 1050</span></a>
+      </nav>
+    </aside>
+    <div class="sidebar-overlay"></div>
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="menu-toggle" aria-label="Menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <nav class="breadcrumb"><a href="index.html">SANEPAR</a> / <strong>API Journey</strong></nav>
+        <span class="doc-version">v0.1 · Jul 2026</span>
+      </header>
+      <main class="content">
+        <div class="page-header">
+          <div class="page-header-icon page-header-icon-api"><i data-lucide="plug-zap" class="icon"></i></div>
+          <h1>API Journey — DHuO (GCP)</h1>
+          <p class="lead">Camada de <strong>gestão e governança de APIs</strong> da SANEPAR: <strong>DHuO</strong> como API Manager corporativo (SaaS), integrando a <a href="data-journey.html">Data Journey</a> (lakehouse GCP) e a <a href="ai-journey.html">AI Journey</a> (Vertex / Looker).</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="cloud" class="icon"></i>Stack — 100% GCP + DHuO</div>
+          <p>Conectividade SANEPAR ⇄ GCP via VPN / Interconnect; IdP SANEPAR (OIDC/SAML); observabilidade Cloud Monitoring / Logging / Trace.</p>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="boxes" class="icon icon-section"></i>Plataforma</h2>
+        <div class="table-wrapper">
+          <table class="trace-table">
+            <thead><tr><th>Capacidade</th><th>Produto</th></tr></thead>
+            <tbody>
+              <tr><td>API Gateway / Manager</td><td><strong>DHuO</strong> (SaaS dedicado)</td></tr>
+              <tr><td>Developer Portal</td><td>DHuO</td></tr>
+              <tr><td>iPaaS / mediação</td><td>DHuO</td></tr>
+              <tr><td>Identidade</td><td>IdP SANEPAR (OIDC / SAML v2)</td></tr>
+              <tr><td>Segredos / IAM cloud</td><td>Secret Manager · Cloud IAM</td></tr>
+              <tr><td>Observabilidade</td><td>Cloud Monitoring · Logging · Trace</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="git-branch" class="icon icon-section"></i>Duas esteiras</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Esteira analítica</h3>
+            <p>~21 APIs GET → Pub/Sub / collectors → lakehouse → dashboards e ML.</p>
+          </div>
+          <div class="card">
+            <h3>Esteira de proxies</h3>
+            <p>~129 proxies no DHuO — governança, auth, volumetria (~150 APIs no total).</p>
+          </div>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="workflow" class="icon icon-section"></i>Fluxo lógico</h2>
+        <pre class="mermaid">
+flowchart LR
+  SRC[APIs / Historian SANEPAR] --> VPN[VPN / Interconnect]
+  VPN --> DHUO[DHuO API Manager]
+  DHUO --> PROXY[Proxies / governança]
+  DHUO --> GET[APIs GET analíticas]
+  GET --> GCP[GCP · Pub/Sub · Lakehouse]
+  GCP --> BI[Looker]
+  GCP --> ML[Vertex AI]
+        </pre>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="file-text" class="icon"></i>Projeto</div>
+          <p>Detalhes de escopo, riscos e volumetria: <a href="dossie-telemetria.html">Dossiê Dados &amp; IA</a> · Cronograma: <a href="cronograma-pe1050.html">PE 1050/2026</a>.</p>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" class="footer-logo-transpetro" width="80">
+        </div>
+        <p class="footer-copy">API Journey · DHuO · GCP · SANEPAR · PE 1050/2026</p>
+        <div class="brand-engineering" title="Metodologia Engineering">
+          <img src="assets/brand/engineering-icon-dark.svg" alt="Engineering" width="16" height="14">
+          <span>Metodologia Engineering</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/icons.js"></script>
+</body>
+</html>

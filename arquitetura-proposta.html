@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquitetura Proposta — Data · API · ML | SANEPAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/brand/brand.css">
+  <link rel="stylesheet" href="assets/css/gcp-diagrams.css">
+  <style>
+    .path-grid { display: grid; gap: 1rem; margin: 1rem 0 1.5rem; }
+    @media (min-width: 900px) { .path-grid { grid-template-columns: 1fr 1fr; } }
+    .path-card {
+      border: 1px solid #cfe3f5; border-radius: 8px; padding: 1rem 1.1rem;
+      background: #f8fbfe;
+    }
+    .path-card h3 { margin: 0 0 0.5rem; color: #0862ad; font-size: 1.05rem; }
+    .path-card.preferred { border-color: #0c97ed; box-shadow: 0 0 0 1px rgba(12,151,237,0.2); }
+    .mod-table th { white-space: nowrap; }
+    .mod-ico { width: 28px; height: 28px; vertical-align: middle; margin-right: 0.35rem; }
+  </style>
+</head>
+<body class="brand-sanepar">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-branding">
+          <a href="index.html" class="brand-sanepar" aria-label="SANEPAR">
+            <span class="brand-sanepar-plate"><img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" width="128" height="auto"></span></a>
+          <p class="sidebar-brand">Data · API · ML</p>
+          <p class="sidebar-subtitle">Telemetria · DHuO · PE 1050/2026 · v0.1</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <p class="nav-section-title">Documentação</p>
+        <a href="index.html" class="nav-link"><i data-lucide="layout-dashboard" class="icon icon-nav"></i><span>Visão Geral</span></a>
+        <a href="capacidades-negocio.html" class="nav-link"><i data-lucide="layers" class="icon icon-nav"></i><span>Domínios e Capacidades</span></a>
+        <a href="arquitetura-proposta.html" class="nav-link"><i data-lucide="workflow" class="icon icon-nav"></i><span>Arquitetura Proposta</span></a>
+        <a href="data-journey.html" class="nav-link"><i data-lucide="database" class="icon icon-nav"></i><span>Data Journey</span></a>
+        <a href="api-journey.html" class="nav-link"><i data-lucide="plug-zap" class="icon icon-nav"></i><span>API Journey</span></a>
+        <a href="ai-journey.html" class="nav-link"><i data-lucide="route" class="icon icon-nav"></i><span>AI Journey</span></a>
+        <a href="dossie-telemetria.html" class="nav-link"><i data-lucide="file-text" class="icon icon-nav"></i><span>Dossiê Dados & IA</span></a>
+        <a href="cronograma-pe1050.html" class="nav-link"><i data-lucide="calendar-range" class="icon icon-nav"></i><span>Cronograma PE 1050</span></a>
+      </nav>
+    </aside>
+    <div class="sidebar-overlay"></div>
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="menu-toggle" aria-label="Menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <nav class="breadcrumb"><a href="index.html">SANEPAR</a> / <strong>Arquitetura Proposta</strong></nav>
+        <span class="doc-version">v0.1 · Jul 2026</span>
+      </header>
+      <main class="content">
+        <div class="page-header">
+          <div class="page-header-icon"><i data-lucide="workflow" class="icon"></i></div>
+          <h1>Arquitetura Proposta — GCP</h1>
+          <p class="lead">Topologia alvo do PE 1050/2026 com <strong>ícones Google Cloud</strong>: DHuO + Pub/Sub + Dataflow + Cloud Storage + BigQuery + Vertex + Looker.</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="cloud" class="icon"></i>Cloud</div>
+          <p>Stack <strong>100% GCP</strong> · <code>southamerica-east1</code> · DEV / HML / PROD isolados. Ícones: pack em <code>assets/icons/gcp/</code>.</p>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="network" class="icon icon-section"></i>Visão fim a fim</h2>
+        <div class="gcp-diagram" role="img" aria-label="Arquitetura proposta SANEPAR em GCP">
+          <div class="gcp-arch">
+            <div class="gcp-row">
+              <div class="gcp-group">
+                <p class="gcp-group-title">Origem · Conectividade</p>
+                <div class="gcp-nodes">
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/hybrid.svg" alt="" width="48" height="48"><span class="gcp-label">OT / APIs SANEPAR</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/cloud-vpn.svg" alt="" width="48" height="48"><span class="gcp-label">Cloud VPN</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/cloud-interconnect.svg" alt="" width="48" height="48"><span class="gcp-label">Interconnect</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/apigee.svg" alt="" width="48" height="48"><span class="gcp-label">DHuO</span><span class="gcp-sublabel">API Manager</span></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="gcp-arrow-row" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+            <div class="gcp-row">
+              <div class="gcp-group">
+                <p class="gcp-group-title">Ingestão</p>
+                <div class="gcp-nodes">
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/pub-sub.svg" alt="" width="48" height="48"><span class="gcp-label">Pub/Sub</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/dataflow.svg" alt="" width="48" height="48"><span class="gcp-label">Dataflow</span><span class="gcp-sublabel">Path A</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/cloud-storage.svg" alt="" width="48" height="48"><span class="gcp-label">GCS landing</span><span class="gcp-sublabel">Path B</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/gke.svg" alt="" width="48" height="48"><span class="gcp-label">Kafka / GKE</span><span class="gcp-sublabel">opcional</span></div></div>
+                </div>
+              </div>
+              <div class="gcp-group">
+                <p class="gcp-group-title">Lakehouse</p>
+                <div class="gcp-nodes">
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/cloud-storage.svg" alt="" width="48" height="48"><span class="gcp-label">Bronze / Silver</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/bigquery.svg" alt="" width="48" height="48"><span class="gcp-label">BigQuery Gold</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/composer.svg" alt="" width="48" height="48"><span class="gcp-label">Composer</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/dataproc.svg" alt="" width="48" height="48"><span class="gcp-label">Dataproc / dbt</span></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="gcp-arrow-row" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div>
+            <div class="gcp-row">
+              <div class="gcp-group">
+                <p class="gcp-group-title">Consumo · Governança</p>
+                <div class="gcp-nodes">
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/looker.svg" alt="" width="48" height="48"><span class="gcp-label">Looker</span><span class="gcp-sublabel">5 dashboards</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/vertex-ai.svg" alt="" width="48" height="48"><span class="gcp-label">Vertex AI</span><span class="gcp-sublabel">2 ML</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/dataplex.svg" alt="" width="48" height="48"><span class="gcp-label">Dataplex</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/security-identity.svg" alt="" width="48" height="48"><span class="gcp-label">IAM / IdP</span></div></div>
+                  <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/observability.svg" alt="" width="48" height="48"><span class="gcp-label">Monitoring</span></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="gcp-diagram-caption">Ícones: <a href="https://cloud.google.com/icons">Google Cloud Icons</a> · deck <a href="https://docs.google.com/presentation/d/1fD1AwQo4E9Un6012zyPEb7NvUAGlzF6L-vo5DbUe4NQ/edit">Official Icons &amp; Solution Architectures</a> · aliases em <code>assets/icons/gcp/</code></p>
+        </div>
+
+        <h2 class="section-title" id="ingestao"><i data-lucide="radio" class="icon icon-section"></i>Ingestão — Path A vs Path B</h2>
+        <div class="path-grid">
+          <div class="path-card preferred">
+            <span class="gcp-path-tag">Path A · preferido</span>
+            <div class="gcp-flow-lr" aria-label="Path A">
+              <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/pub-sub.svg" alt="" width="48" height="48"><span class="gcp-label">Pub/Sub</span></div></div>
+              <span class="gcp-flow-arrow">→</span>
+              <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/dataflow.svg" alt="" width="48" height="48"><span class="gcp-label">Dataflow</span></div></div>
+              <span class="gcp-flow-arrow">→</span>
+              <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/cloud-storage.svg" alt="" width="48" height="48"><span class="gcp-label">GCS / BQ</span></div></div>
+            </div>
+            <p>Streaming I/O nativo Pub/Sub → Dataflow → Bronze/Silver/Gold.</p>
+          </div>
+          <div class="path-card">
+            <span class="gcp-path-tag">Path B · fallback</span>
+            <div class="gcp-flow-lr" aria-label="Path B">
+              <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/pub-sub.svg" alt="" width="48" height="48"><span class="gcp-label">Pub/Sub</span></div></div>
+              <span class="gcp-flow-arrow">→</span>
+              <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/cloud-storage.svg" alt="" width="48" height="48"><span class="gcp-label">GCS landing</span></div></div>
+              <span class="gcp-flow-arrow">→</span>
+              <div class="gcp-node"><div class="gcp-node-box"><img src="assets/icons/gcp/dataflow.svg" alt="" width="48" height="48"><span class="gcp-label">Dataflow</span></div></div>
+            </div>
+            <p>Se Dataflow <strong>não puder</strong> ler direto do Pub/Sub: buffer em <strong>buckets</strong>, depois processa.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="info" class="icon"></i>Decisão de desenho</div>
+          <p>Validar Path A no POC. Path B mantém o mesmo lakehouse. Kafka Confluent (GKE) só se fan-out exigir.</p>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="boxes" class="icon icon-section"></i>Módulos GCP</h2>
+        <div class="table-wrapper">
+          <table class="trace-table mod-table">
+            <thead><tr><th>Camada</th><th>Módulo</th><th>Papel</th></tr></thead>
+            <tbody>
+              <tr><td>Integração</td><td><img class="mod-ico" src="assets/icons/gcp/apigee.svg" alt=""> <strong>DHuO</strong></td><td>API Gateway / Manager · ~150 APIs</td></tr>
+              <tr><td>Mensageria</td><td><img class="mod-ico" src="assets/icons/gcp/pub-sub.svg" alt=""> <strong>Pub/Sub</strong></td><td>Desacoplamento · tópicos telemetria</td></tr>
+              <tr><td>Stream</td><td><img class="mod-ico" src="assets/icons/gcp/dataflow.svg" alt=""> <strong>Dataflow</strong></td><td>Path A ou leitura de GCS (Path B)</td></tr>
+              <tr><td>Landing</td><td><img class="mod-ico" src="assets/icons/gcp/cloud-storage.svg" alt=""> <strong>Cloud Storage</strong></td><td>Bronze + buffer Path B</td></tr>
+              <tr><td>Gold</td><td><img class="mod-ico" src="assets/icons/gcp/bigquery.svg" alt=""> <strong>BigQuery</strong></td><td>Analytics · features ML</td></tr>
+              <tr><td>Orquestração</td><td><img class="mod-ico" src="assets/icons/gcp/composer.svg" alt=""> <strong>Composer</strong> · Dataproc · dbt</td><td>Batch / ELT</td></tr>
+              <tr><td>BI</td><td><img class="mod-ico" src="assets/icons/gcp/looker.svg" alt=""> <strong>Looker</strong></td><td>5 dashboards</td></tr>
+              <tr><td>ML</td><td><img class="mod-ico" src="assets/icons/gcp/vertex-ai.svg" alt=""> <strong>Vertex AI</strong></td><td>2 modelos · MLOps</td></tr>
+              <tr><td>Gov / Ops</td><td><img class="mod-ico" src="assets/icons/gcp/dataplex.svg" alt=""> Dataplex · <img class="mod-ico" src="assets/icons/gcp/observability.svg" alt=""> Monitoring</td><td>LGPD · SLO</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="link" class="icon icon-section"></i>Ofertas e evidências</h2>
+        <ul>
+          <li><a href="api-journey.html">API Journey</a> — DHuO</li>
+          <li><a href="data-journey.html">Data Journey</a> — lakehouse / ingestão</li>
+          <li><a href="ai-journey.html">AI Journey</a> — Vertex · Looker</li>
+          <li><a href="dossie-telemetria.html#arquitetura-presales">Dossiê · diagramas pre-sales</a></li>
+          <li>Stack: <a href="assets/pre-sales/architecture-stack.yaml">architecture-stack.yaml</a></li>
+        </ul>
+      </main>
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" class="footer-logo-transpetro" width="80">
+        </div>
+        <p class="footer-copy">Arquitetura Proposta · GCP Icons · SANEPAR · PE 1050/2026</p>
+        <div class="brand-engineering" title="Metodologia Engineering">
+          <img src="assets/brand/engineering-icon-dark.svg" alt="Engineering" width="16" height="14">
+          <span>Metodologia Engineering</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/icons.js"></script>
+</body>
+</html>

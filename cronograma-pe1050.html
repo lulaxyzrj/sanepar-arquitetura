@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronograma PE 1050/2026 | SANEPAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/brand/brand.css">
+  <style>
+    .page-header-icon { background: #0862ad; }
+    .ws-bar {
+      display: grid; gap: 0.45rem; margin: 1rem 0 1.5rem;
+    }
+    .ws-row {
+      display: grid; grid-template-columns: 11rem 1fr 9rem;
+      gap: 0.75rem; align-items: center; font-size: 0.9rem;
+    }
+    .ws-track {
+      height: 1.35rem; background: #e1effd; border-radius: 3px; position: relative; overflow: hidden;
+    }
+    .ws-fill {
+      position: absolute; top: 0; bottom: 0; background: #0862ad; border-radius: 3px; opacity: 0.85;
+    }
+    .ws-fill.api { background: #0e7490; }
+    .ws-fill.data { background: #0369a1; }
+    .ws-fill.ai { background: #1d4ed8; }
+    .ws-fill.gov { background: #475569; }
+    .ws-fill.qa { background: #0f766e; }
+    .ws-dates { color: #64748b; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    @media (max-width: 720px) {
+      .ws-row { grid-template-columns: 1fr; gap: 0.25rem; }
+    }
+  </style>
+</head>
+<body class="brand-sanepar">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-branding">
+          <a href="index.html" class="brand-sanepar" aria-label="SANEPAR">
+            <span class="brand-sanepar-plate"><img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" width="128" height="auto"></span></a>
+          <p class="sidebar-brand">Data · API · ML</p>
+          <p class="sidebar-subtitle">Telemetria · DHuO · PE 1050/2026 · v0.1</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <p class="nav-section-title">Documentação</p>
+        <a href="index.html" class="nav-link"><i data-lucide="layout-dashboard" class="icon icon-nav"></i><span>Visão Geral</span></a>
+        <a href="capacidades-negocio.html" class="nav-link"><i data-lucide="layers" class="icon icon-nav"></i><span>Domínios e Capacidades</span></a>
+        <a href="arquitetura-proposta.html" class="nav-link"><i data-lucide="workflow" class="icon icon-nav"></i><span>Arquitetura Proposta</span></a>
+        <a href="data-journey.html" class="nav-link"><i data-lucide="database" class="icon icon-nav"></i><span>Data Journey</span></a>
+        <a href="api-journey.html" class="nav-link"><i data-lucide="plug-zap" class="icon icon-nav"></i><span>API Journey</span></a>
+        <a href="ai-journey.html" class="nav-link"><i data-lucide="route" class="icon icon-nav"></i><span>AI Journey</span></a>
+        <a href="dossie-telemetria.html" class="nav-link"><i data-lucide="file-text" class="icon icon-nav"></i><span>Dossiê Dados & IA</span></a>
+        <a href="cronograma-pe1050.html" class="nav-link"><i data-lucide="calendar-range" class="icon icon-nav"></i><span>Cronograma PE 1050</span></a>
+      </nav>
+    </aside>
+    <div class="sidebar-overlay"></div>
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="menu-toggle" aria-label="Menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <nav class="breadcrumb"><a href="index.html">SANEPAR</a> / <strong>Cronograma PE 1050</strong></nav>
+        <span class="doc-version">v0.1 · Jul 2026</span>
+      </header>
+      <main class="content">
+
+        <div class="page-header">
+          <div class="page-header-icon"><i data-lucide="calendar-range" class="icon"></i></div>
+          <h1>Cronograma — PE 1050/2026</h1>
+          <p class="lead">Extrato do MS Project (MSPDI) · <code>SANEPAR_PRELIMINAR_1050/26</code> · janela 2026-07-01 → 2027-03-24 · execução até 2027-01-26.</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="info" class="icon"></i>Preliminar</div>
+          <p>Esforço e prazos são especulativos até o Design Sprint. Nova versão do CRN após escopo real. Premissas no próprio arquivo: 21 APIs mandatórias + 129 proxies (~150 no DHuO); Projeto Executivo ~80% neste CRN.</p>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="flag" class="icon icon-section"></i>Fases</h2>
+        <div class="table-wrapper">
+          <table class="trace-table">
+            <thead><tr><th>WBS</th><th>Fase</th><th>Início</th><th>Fim</th></tr></thead>
+            <tbody>
+              <tr><td>1.1.1</td><td>Premissas</td><td>2026-07-06</td><td>2026-07-06</td></tr>
+              <tr><td>1.1.2</td><td>Iniciação</td><td>2026-07-06</td><td>2026-07-21</td></tr>
+              <tr><td>1.1.3</td><td>Planejamento / Kickoff</td><td>2026-07-21</td><td>2026-08-04</td></tr>
+              <tr><td>1.1.4</td><td>Execução</td><td>2026-07-06</td><td>2027-01-26</td></tr>
+              <tr><td>1.1.5</td><td>Encerramento</td><td>2027-01-27</td><td>2027-02-11</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="sparkles" class="icon icon-section"></i>Design Sprint (escopo congelado)</h2>
+        <p>Janela efetiva de marcos D1–D5: <strong>2026-08-10 → 2026-08-19</strong>.</p>
+        <div class="table-wrapper">
+          <table class="trace-table">
+            <thead><tr><th>Dia</th><th>Data</th><th>Marco</th></tr></thead>
+            <tbody>
+              <tr><td>D1</td><td>2026-08-10</td><td>Entendimento e alinhamento (incl. 5 dashboards + 2 ML)</td></tr>
+              <tr><td>D2</td><td>2026-08-12</td><td>Brainstorming dashboards / hipóteses ML</td></tr>
+              <tr><td>D3</td><td>2026-08-14</td><td>Aprovação do escopo definitivo</td></tr>
+              <tr><td>D4</td><td>2026-08-18</td><td>Protótipos (5 dashboards + 2 fluxos ML)</td></tr>
+              <tr><td>D5</td><td>2026-08-19</td><td>Validação final do Design Sprint</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="layers" class="icon icon-section"></i>Frentes de trabalho</h2>
+        <p>Escala relativa à execução 2026-08-19 → 2027-01-26 (~160 dias).</p>
+        <div class="ws-bar" aria-label="Frentes de trabalho">
+          <div class="ws-row"><span>Discovery / Arquitetura</span><div class="ws-track"><span class="ws-fill" style="left:0%;width:10%"></span></div><span class="ws-dates">08-19 → 09-03</span></div>
+          <div class="ws-row"><span>Ingestão e Pipelines</span><div class="ws-track"><span class="ws-fill data" style="left:10%;width:20%"></span></div><span class="ws-dates">09-04 → 10-05</span></div>
+          <div class="ws-row"><span>Integração e APIs (DHuO)</span><div class="ws-track"><span class="ws-fill api" style="left:30%;width:24%"></span></div><span class="ws-dates">10-06 → 11-13</span></div>
+          <div class="ws-row"><span>Integração &amp; MLOps</span><div class="ws-track"><span class="ws-fill ai" style="left:56%;width:14%"></span></div><span class="ws-dates">11-16 → 12-07</span></div>
+          <div class="ws-row"><span>Governança e Segurança</span><div class="ws-track"><span class="ws-fill gov" style="left:70%;width:7%"></span></div><span class="ws-dates">12-08 → 12-18</span></div>
+          <div class="ws-row"><span>BI e Analytics</span><div class="ws-track"><span class="ws-fill ai" style="left:78%;width:9%"></span></div><span class="ws-dates">12-21 → 01-04</span></div>
+          <div class="ws-row"><span>QA e Go Live</span><div class="ws-track"><span class="ws-fill qa" style="left:87%;width:13%"></span></div><span class="ws-dates">01-05 → 01-26</span></div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="trace-table">
+            <thead><tr><th>Frente</th><th>Subentregas</th><th>Offer Forge</th></tr></thead>
+            <tbody>
+              <tr><td>Discovery e Arquitetura</td><td>Arquitetura · Landing Zone · DevOps/CI/CD</td><td>—</td></tr>
+              <tr><td>Ingestão e Pipelines</td><td>Streaming telemetria · ETL/ELT · Lake/DW</td><td><code>data-journey</code></td></tr>
+              <tr><td>Integração e APIs</td><td>API Gateway DHuO · Integração sistemas</td><td><code>api-journey</code></td></tr>
+              <tr><td>Integração &amp; MLOps</td><td>Setup MLOps · Modelos preditivos (perda/consumo)</td><td><code>ai-journey</code></td></tr>
+              <tr><td>Governança e Segurança</td><td>Catálogo · LGPD/IAM</td><td><code>data-journey</code></td></tr>
+              <tr><td>BI e Analytics</td><td>Modelagem semântica · Dashboards · Homologação</td><td><code>ai-journey</code></td></tr>
+              <tr><td>QA e Go Live</td><td>Testes · Hardening · GoLive + transferência</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="milestone" class="icon icon-section"></i>Marcos-chave</h2>
+        <ul>
+          <li><strong>2026-07-21</strong> — Projeto habilitado para início</li>
+          <li><strong>2026-07-24</strong> — Submeter CRN / DPP / PRO / PFP ao GP cliente</li>
+          <li><strong>2026-08-19</strong> — Validação final Design Sprint</li>
+          <li><strong>2027-01-26</strong> — Fim da execução / Go Live</li>
+          <li><strong>2027-02-11</strong> — Encerramento (TEP / PPQA)</li>
+        </ul>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="folder" class="icon"></i>Fontes</div>
+          <p>
+            Resumo: <a href="assets/timeline/schedule-summary.yaml">schedule-summary.yaml</a> ·
+            Detalhe: <a href="assets/timeline/workstreams-detail.yaml">workstreams-detail.yaml</a> ·
+            Dossiê: <a href="dossie-telemetria.html">dossie-telemetria.html</a>
+          </p>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" class="footer-logo-transpetro" width="80">
+        </div>
+        <p class="footer-copy">Cronograma PE 1050/2026 · CRN V0 preliminar</p>
+        <div class="brand-engineering" title="Metodologia Engineering">
+          <img src="assets/brand/engineering-icon-dark.svg" alt="Engineering" width="16" height="14">
+          <span>Metodologia Engineering</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/icons.js"></script>
+</body>
+</html>

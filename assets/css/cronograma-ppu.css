@@ -1,0 +1,262 @@
+/* CEA Cronogram — Gantt timeline */
+
+.ppu-cronogram-wrap {
+  margin: 1.5rem 0 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.ppu-cronogram-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ppu-cronogram-grid {
+  min-width: 960px;
+}
+
+.ppu-cronogram-head,
+.ppu-cronogram-row,
+.ppu-cronogram-phase-row {
+  display: grid;
+  grid-template-columns: 220px 72px 56px 56px 56px 1fr;
+  align-items: stretch;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ppu-cronogram-head {
+  background: #1e293b;
+  color: #f8fafc;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ppu-cronogram-head > div,
+.ppu-cronogram-row > div,
+.ppu-cronogram-phase-row > div {
+  padding: 0.45rem 0.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ppu-cronogram-head > div:last-child,
+.ppu-cronogram-row > div:last-child,
+.ppu-cronogram-phase-row > div:last-child {
+  border-right: none;
+}
+
+.ppu-cronogram-phase-row {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: #fff;
+}
+
+.ppu-cronogram-phase-row .ppu-cronogram-meta {
+  grid-column: 1 / 6;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ppu-cronogram-phase-row .ppu-cronogram-track-cell {
+  grid-column: 6;
+  min-height: 28px;
+}
+
+.ppu-cronogram-row {
+  font-size: 0.78rem;
+  background: var(--color-bg);
+}
+
+.ppu-cronogram-row:nth-child(even) {
+  background: var(--color-surface);
+}
+
+.ppu-cronogram-row .ppu-cronogram-item-id {
+  font-weight: 600;
+  color: var(--color-petrobras-green-dark, #006341);
+}
+
+.ppu-cronogram-row a.ppu-cronogram-title {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.ppu-cronogram-row a.ppu-cronogram-title:hover {
+  color: var(--color-petrobras-green);
+  text-decoration: underline;
+}
+
+.ppu-cronogram-head > div:nth-child(2),
+.ppu-cronogram-row > div:nth-child(2) {
+  text-align: center;
+  font-size: 0.72rem;
+}
+
+.ppu-cronogram-num {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+}
+
+.ppu-cronogram-track {
+  position: relative;
+  min-height: 26px;
+  background:
+    repeating-linear-gradient(
+      to right,
+      transparent,
+      transparent calc(100% / 36 - 1px),
+      rgba(148, 163, 184, 0.25) calc(100% / 36 - 1px),
+      rgba(148, 163, 184, 0.25) calc(100% / 36)
+    );
+}
+
+.ppu-cronogram-bar {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 3px;
+  opacity: 0.92;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 0 4px;
+  border-left: 3px solid rgba(0, 0, 0, 0.2);
+}
+
+.ppu-cronogram-bar-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.1;
+  pointer-events: none;
+  letter-spacing: 0.01em;
+}
+
+.ppu-cronogram-bar--narrow {
+  padding: 0 2px;
+  justify-content: center;
+}
+
+.ppu-cronogram-bar--narrow .ppu-cronogram-bar-label {
+  font-size: 0.55rem;
+}
+
+.ppu-cronogram-group-badge {
+  display: inline-block;
+  min-width: 2.4rem;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: #e2e8f0;
+  color: #334155;
+  font-weight: 700;
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.ppu-cronogram-months {
+  display: grid;
+  grid-template-columns: 220px 72px 56px 56px 56px 1fr;
+  background: #334155;
+  color: #e2e8f0;
+  font-size: 0.68rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ppu-cronogram-months .ppu-cronogram-month-spacer {
+  grid-column: 1 / 6;
+}
+
+.ppu-cronogram-month-track {
+  position: relative;
+  height: 22px;
+}
+
+.ppu-cronogram-month-label {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  font-weight: 600;
+}
+
+.ppu-cronogram-weeks {
+  display: grid;
+  grid-template-columns: 220px 72px 56px 56px 56px 1fr;
+  background: #475569;
+  color: #f1f5f9;
+  font-size: 0.62rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ppu-cronogram-weeks .ppu-cronogram-month-spacer {
+  grid-column: 1 / 6;
+}
+
+.ppu-cronogram-weeks .ppu-cronogram-week-track {
+  grid-column: 6;
+}
+
+.ppu-cronogram-week-track {
+  position: relative;
+  height: 18px;
+}
+
+.ppu-cronogram-week-n {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: calc(100% / 36);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  font-variant-numeric: tabular-nums;
+}
+
+.ppu-cronogram-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.ppu-cronogram-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+}
+
+.ppu-cronogram-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.ppu-cronogram-summary .trace-table td:first-child {
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .ppu-cronogram-head,
+  .ppu-cronogram-row,
+  .ppu-cronogram-phase-row,
+  .ppu-cronogram-months,
+  .ppu-cronogram-weeks {
+    grid-template-columns: 160px 56px 44px 44px 44px 1fr;
+  }
+}

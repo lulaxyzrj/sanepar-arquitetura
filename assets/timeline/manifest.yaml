@@ -1,0 +1,31 @@
+# MS Project / CRN — PE 1050/2026 (preliminar)
+id: sanepar-timeline-pe1050
+process: PE 1050/2026
+status: preliminar
+summaryFile: schedule-summary.yaml
+detailFile: workstreams-detail.yaml
+source:
+  format: mspdi
+  file: CRN_ENG_OBS_SANEPAR_V0 1.xml
+  exportedAs: SANEPAR_PRELIMINAR_1050/26
+  note: >
+    MSPDI XML (~3.3 MB, 278 tasks). Metadados do arquivo herdam template HEKTOR/Accenture;
+    WBS raiz do projeto cliente é SANEPAR_PRELIMINAR_1050/26. Baseline V1 rotulada 22/07/2026.
+  lastSaved: "2026-07-23"
+window:
+  start: "2026-07-01"
+  finish: "2027-03-24"
+  executionFinish: "2027-01-26"
+disclaimer: >
+  Cronograma preliminar — esforço e prazos especulativos até Design Sprints;
+  nova versão após visão real de escopo.
+pages:
+  - file: cronograma-pe1050.html
+    title: Cronograma PE 1050/2026
+    navLabel: Cronograma PE 1050
+    icon: calendar-range
+    order: 74
+forgeOffers:
+  api-journey: Integração e APIs / DHuO (out–nov 2026)
+  data-journey: Ingestão e Pipelines + Lake/DW (set–out 2026)
+  ai-journey: MLOps + BI/Analytics (nov 2026–jan 2027)

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Journey — Data · API · ML | SANEPAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/brand/brand.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });</script>
+</head>
+<body class="brand-sanepar">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-branding">
+          <a href="index.html" class="brand-sanepar" aria-label="SANEPAR">
+            <span class="brand-sanepar-plate"><img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" width="128" height="auto"></span></a>
+          <p class="sidebar-brand">Data · API · ML</p>
+          <p class="sidebar-subtitle">Telemetria · DHuO · PE 1050/2026 · v0.1</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <p class="nav-section-title">Documentação</p>
+        <a href="index.html" class="nav-link"><i data-lucide="layout-dashboard" class="icon icon-nav"></i><span>Visão Geral</span></a>
+        <a href="capacidades-negocio.html" class="nav-link"><i data-lucide="layers" class="icon icon-nav"></i><span>Domínios e Capacidades</span></a>
+        <a href="arquitetura-proposta.html" class="nav-link"><i data-lucide="workflow" class="icon icon-nav"></i><span>Arquitetura Proposta</span></a>
+        <a href="data-journey.html" class="nav-link"><i data-lucide="database" class="icon icon-nav"></i><span>Data Journey</span></a>
+        <a href="api-journey.html" class="nav-link"><i data-lucide="plug-zap" class="icon icon-nav"></i><span>API Journey</span></a>
+        <a href="ai-journey.html" class="nav-link"><i data-lucide="route" class="icon icon-nav"></i><span>AI Journey</span></a>
+        <a href="dossie-telemetria.html" class="nav-link"><i data-lucide="file-text" class="icon icon-nav"></i><span>Dossiê Dados & IA</span></a>
+        <a href="cronograma-pe1050.html" class="nav-link"><i data-lucide="calendar-range" class="icon icon-nav"></i><span>Cronograma PE 1050</span></a>
+      </nav>
+    </aside>
+    <div class="sidebar-overlay"></div>
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="menu-toggle" aria-label="Menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <nav class="breadcrumb"><a href="index.html">SANEPAR</a> / <strong>Data Journey</strong></nav>
+        <span class="doc-version">v0.1 · Jul 2026</span>
+      </header>
+      <main class="content">
+        <div class="page-header">
+          <div class="page-header-icon"><i data-lucide="database" class="icon"></i></div>
+          <h1>Data Journey — Lakehouse GCP</h1>
+          <p class="lead">Fundação de dados do PE 1050/2026: ingestão de telemetria, lakehouse Bronze/Silver/Gold, governança Dataplex e consumo via Looker / Vertex — APIs via <a href="api-journey.html">DHuO</a>.</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="cloud" class="icon"></i>Stack — 100% GCP</div>
+          <p>Pub/Sub · Dataflow · Confluent Kafka (GKE) · Cloud Storage · BigQuery · Composer · Dataproc · dbt · Dataplex.</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="workflow" class="icon"></i>Arquitetura</div>
+          <p>Topologia GCP completa (Pub/Sub · Dataflow · buckets · BigQuery): <a href="arquitetura-proposta.html">Arquitetura Proposta</a>.</p>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="layers" class="icon icon-section"></i>Camadas</h2>
+        <div class="table-wrapper">
+          <table class="trace-table">
+            <thead><tr><th>Camada</th><th>GCP</th><th>TR / nota</th></tr></thead>
+            <tbody>
+              <tr><td>Streaming</td><td>Pub/Sub → Dataflow → Confluent Kafka</td><td>TR 4.1.4</td></tr>
+              <tr><td>Batch / APIs</td><td>DHuO REST/GraphQL · Transfer Service</td><td>APIs GET analíticas</td></tr>
+              <tr><td>Bronze / Silver</td><td>Cloud Storage</td><td>raw / tratado</td></tr>
+              <tr><td>Gold</td><td>BigQuery</td><td>negócio / analytics</td></tr>
+              <tr><td>Orquestração / ETL</td><td>Composer · Dataproc · dbt Core</td><td>TR 4.1.5</td></tr>
+              <tr><td>Governança</td><td>Dataplex · Data Catalog · Policy Tags</td><td>LGPD / linhagem</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="workflow" class="icon icon-section"></i>Fluxo</h2>
+        <pre class="mermaid">
+flowchart TB
+  DHUO[DHuO APIs GET] --> PS[Pub/Sub]
+  OT[Telemetria / Historian] --> PS
+  PS --> DF[Dataflow]
+  DF --> K[Kafka Confluent]
+  K --> BR[GCS Bronze]
+  BR --> SL[GCS Silver]
+  SL --> BQ[BigQuery Gold]
+  BQ --> LK[Looker]
+  BQ --> VX[Vertex AI]
+  COMP[Composer / Dataproc / dbt] --> SL
+  COMP --> BQ
+        </pre>
+
+        <h2 class="section-title"><i data-lucide="hard-drive" class="icon icon-section"></i>Volumetria (referência)</h2>
+        <p>Cenário expansão Y5 ≈ <strong>2.070 GB</strong> · cenário atual Y5 ≈ <strong>486 GB</strong> — ver <a href="dossie-telemetria.html#volumetria">dossiê</a>.</p>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="image" class="icon"></i>Diagramas pre-sales</div>
+          <p><a href="dossie-telemetria.html#arquitetura-presales">Arquitetura integrada + Zoom-in ingestão/ETL</a> em <code>assets/pre-sales/</code>.</p>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" class="footer-logo-transpetro" width="80">
+        </div>
+        <p class="footer-copy">Data Journey · GCP Lakehouse · SANEPAR · PE 1050/2026</p>
+        <div class="brand-engineering" title="Metodologia Engineering">
+          <img src="assets/brand/engineering-icon-dark.svg" alt="Engineering" width="16" height="14">
+          <span>Metodologia Engineering</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/icons.js"></script>
+</body>
+</html>

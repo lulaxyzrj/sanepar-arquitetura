@@ -1,0 +1,110 @@
+# Reference architecture extracted from pre-sales diagrams + PT PE 1050/2026
+id: sanepar-arch-reference-v2
+sourceArtifacts:
+  - Arquitetura_Sanepar_Dados_OT_v2 5.png
+  - Sanepar_ZoomIN_Ingestao_v2 2.png
+  - Sanepar_ZoomIN_ETL_v2 2.png
+  - PT_Sanepar_PE1050_Engineering_v7 1.docx
+
+principles:
+  - cloud-first
+  - governada by design
+  - orientada a dados
+  - API first (DHuO)
+  - fully managed onde aplicável (sem transferir risco operacional à SANEPAR)
+
+environments:
+  - DEV
+  - HOMOLOGACAO  # foco inicial alinhamento
+  - PRODUCAO
+isolation: [contas, projetos, VPCs, identidades, dados]
+
+layers:
+  onPrem:
+    ot: [medidores, sensores, bombas_estacoes, CLP_RTU, outros]
+    apis: Sistemas SANEPAR via Proxy/DHuO
+  connectivity:
+    options: [IPsec VPN, Cloud Interconnect]
+    edge: [NGFW, BGP]
+  integration:
+    platform: DHuO
+    forgeOffer: api-journey
+    capabilities:
+      - API Gateway corporativo
+      - Orquestração / transformação / mediação
+      - Rate limiting / throttling
+      - Autenticação / autorização
+      - Governança / catálogo / versionamento / monitoramento
+  ingestion:
+    streaming:
+      preferredPath: A
+      pathA:
+        name: Pub/Sub → Dataflow (streaming I/O direto)
+        flow: [Pub/Sub, Dataflow]
+        then: [Cloud Storage Bronze/Silver, BigQuery]
+      pathB:
+        name: Fallback via buckets
+        when: Dataflow não consome direto do Pub/Sub (rede, conector, formato ou operação)
+        flow: [Pub/Sub, Cloud Storage landing/Bronze, Dataflow or Composer/Dataproc]
+        then: [Cloud Storage Silver, BigQuery]
+      optionalFanOut: Confluent Cloud Kafka on GKE Autopilot
+      guarantees: [at-least-once, durability, autoscaling, low-latency]
+      trRef: TR 4.1.4
+    batch:
+      - DHuO APIs REST/GraphQL
+      - Transfer Appliance
+      - Cloud Storage Transfer Service
+  lakehouse:
+    bronze: Cloud Storage (raw)
+    silver: Cloud Storage (tratado)
+    gold: BigQuery (negócio)
+    extras: [particionamento por domínio, CMEK]
+  processing:
+    orchestration: Cloud Composer
+    etlManaged: Dataproc Spark
+    transform: dbt Core (ephemeral job on GKE Autopilot)
+    trRef: TR 4.1.5
+  dataGovernance:
+    - Dataplex
+    - Data Catalog
+    - Lineage
+    - Data Quality
+    - Policy Tags (LGPD)
+    - RBAC
+  mlops:
+    flow:
+      - Vertex AI Feature Store
+      - Dataset
+      - Vertex AI Pipelines (treino)
+      - Model Registry
+      - Validação
+      - Vertex AI Endpoints
+      - Monitoring drift/performance
+  genaiControlled:
+    - Gen AI Studio
+    - Model Garden
+    - Vertex AI Search / RAG
+    - Vector Store
+    - Guardrails
+  consumption:
+    bi: Looker
+    dataApis: DHuO REST/GraphQL/Webhooks
+    apps: [Web, Mobile, Portal]
+    dataProducts: [pacotes, APIs, views]
+    genaiApps: [copilots, chatbots]
+  transversal:
+    security: [SSO IdP SAML/OIDC, IAM RBAC, CMEK TLS1.2+, VPC-SC, DLP, audit]
+    observability: [Monitoring, Logging, Trace, Alerting, SIEM]
+    finops: [billing export BQ, budgets, optimization]
+    operations: [NOC 24x7, ITSM, change mgmt, backup DR]
+    slaTarget: "99.98%+"
+
+raciHint:
+  providerManaged: [infra GCP, Confluent Cloud, HA, patching, autoscaling]
+  engineeringManaged: [DAGs, dbt, policies, pipelines, connectors, 24x7 ops monitoring, support]
+  sanepar: [IdP/SSO, inventário APIs, acessos, VPN peer/cliente, gestores]
+
+forgeOffers:
+  api-journey: DHuO API Manager / Gateway / governança ~150 APIs
+  data-journey: Ingestão, lakehouse, Dataplex, ETL/ELT, streaming
+  ai-journey: Vertex MLOps + 2 modelos + GenAI controlada + Looker dashboards

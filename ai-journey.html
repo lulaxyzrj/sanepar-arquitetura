@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Journey — Data · API · ML | SANEPAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/brand/brand.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });</script>
+</head>
+<body class="brand-sanepar">
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-branding">
+          <a href="index.html" class="brand-sanepar" aria-label="SANEPAR">
+            <span class="brand-sanepar-plate"><img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" width="128" height="auto"></span></a>
+          <p class="sidebar-brand">Data · API · ML</p>
+          <p class="sidebar-subtitle">Telemetria · DHuO · PE 1050/2026 · v0.1</p>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <p class="nav-section-title">Documentação</p>
+        <a href="index.html" class="nav-link"><i data-lucide="layout-dashboard" class="icon icon-nav"></i><span>Visão Geral</span></a>
+        <a href="capacidades-negocio.html" class="nav-link"><i data-lucide="layers" class="icon icon-nav"></i><span>Domínios e Capacidades</span></a>
+        <a href="arquitetura-proposta.html" class="nav-link"><i data-lucide="workflow" class="icon icon-nav"></i><span>Arquitetura Proposta</span></a>
+        <a href="data-journey.html" class="nav-link"><i data-lucide="database" class="icon icon-nav"></i><span>Data Journey</span></a>
+        <a href="api-journey.html" class="nav-link"><i data-lucide="plug-zap" class="icon icon-nav"></i><span>API Journey</span></a>
+        <a href="ai-journey.html" class="nav-link"><i data-lucide="route" class="icon icon-nav"></i><span>AI Journey</span></a>
+        <a href="dossie-telemetria.html" class="nav-link"><i data-lucide="file-text" class="icon icon-nav"></i><span>Dossiê Dados & IA</span></a>
+        <a href="cronograma-pe1050.html" class="nav-link"><i data-lucide="calendar-range" class="icon icon-nav"></i><span>Cronograma PE 1050</span></a>
+      </nav>
+    </aside>
+    <div class="sidebar-overlay"></div>
+    <div class="main-wrapper">
+      <header class="top-header">
+        <button class="menu-toggle" aria-label="Menu"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg></button>
+        <nav class="breadcrumb"><a href="index.html">SANEPAR</a> / <strong>AI Journey</strong></nav>
+        <span class="doc-version">v0.1 · Jul 2026</span>
+      </header>
+      <main class="content">
+        <div class="page-header">
+          <div class="page-header-icon"><i data-lucide="brain-circuit" class="icon"></i></div>
+          <h1>AI Journey — Vertex · Looker</h1>
+          <p class="lead"><strong>2 modelos ML</strong> (ex.: perda / consumo) com MLOps no <strong>Vertex AI</strong>, mais <strong>5 dashboards</strong> no <strong>Looker</strong> — sobre o lakehouse da <a href="data-journey.html">Data Journey</a> e APIs da <a href="api-journey.html">API Journey</a>.</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-title"><i data-lucide="cloud" class="icon"></i>Stack — 100% GCP</div>
+          <p>Vertex AI (Feature Store, Pipelines, Model Registry, Endpoints, Monitoring) · Looker · GenAI controlada (Studio, Model Garden, RAG, Guardrails).</p>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="list-checks" class="icon icon-section"></i>Escopo PE 1050/2026</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>5 dashboards</h3>
+            <p>Looker · centro de controle · modelagem semântica BigQuery.</p>
+          </div>
+          <div class="card">
+            <h3>2 modelos ML</h3>
+            <p>Preditivos (perda / consumo) · feature engineering · deploy Vertex.</p>
+          </div>
+          <div class="card">
+            <h3>MLOps</h3>
+            <p>CI/CD de modelos · versionamento · drift · retreino.</p>
+          </div>
+        </div>
+
+        <h2 class="section-title"><i data-lucide="workflow" class="icon icon-section"></i>Ciclo MLOps (GCP)</h2>
+        <pre class="mermaid">
+flowchart LR
+  BQ[BigQuery Gold] --> FS[Feature Store]
+  FS --> PIPE[Vertex Pipelines]
+  PIPE --> REG[Model Registry]
+  REG --> EP[Endpoints]
+  EP --> MON[Monitoring / drift]
+  BQ --> LK[Looker dashboards]
+        </pre>
+
+        <h2 class="section-title"><i data-lucide="calendar-range" class="icon icon-section"></i>Janelas no CRN</h2>
+        <ul>
+          <li><strong>Design Sprint</strong> — definição dos 5 painéis e 2 ML (ago/2026)</li>
+          <li><strong>MLOps + modelos</strong> — nov–dez/2026</li>
+          <li><strong>BI e Analytics</strong> — dez/2026–jan/2027</li>
+        </ul>
+        <p>Ver <a href="cronograma-pe1050.html">cronograma PE 1050</a>.</p>
+      </main>
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <img src="assets/brand/logo-sanepar-2048.png" alt="SANEPAR" class="footer-logo-transpetro" width="80">
+        </div>
+        <p class="footer-copy">AI Journey · Vertex · Looker · SANEPAR · PE 1050/2026</p>
+        <div class="brand-engineering" title="Metodologia Engineering">
+          <img src="assets/brand/engineering-icon-dark.svg" alt="Engineering" width="16" height="14">
+          <span>Metodologia Engineering</span>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script src="assets/js/icons.js"></script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+id: pe-1050-2026-telemetria
+title: Solução integrada de dados, APIs, analytics e IA — telemetria em nuvem
+customer: sanepar
+vendor: Engineering
+process: PE 1050/2026
+consolidatedAt: "2026-07-24"
+sourceNote: >
+  Consolidado a partir de artefatos Microsoft 365 (arquivos, chats Teams, reuniões).
+  Narrativa completa: dossie_tecnico_sanepar_dados_ia.md
+status: in_progress
+narrativeFile: dossie_tecnico_sanepar_dados_ia.md
+preSalesRef: ../pre-sales/manifest.yaml
+architectureRef: ../pre-sales/architecture-stack.yaml
+timelineRef: ../timeline/manifest.yaml
+scheduleRef: ../timeline/schedule-summary.yaml
+
+overview:
+  summary: >
+    Implantação de plataforma integrada de dados, APIs, analytics e IA em GCP,
+    com DHuO como plataforma corporativa de gestão/governança de APIs (API Manager),
+    esteira analítica (GET → lakehouse / dashboards / ML) e esteira de proxies no DHuO.
+  platform: DHuO
+  platformRole: API Manager / API Gateway corporativo (API Journey)
+  cloud: GCP
+  region: southamerica-east1
+  deliveryModel: SaaS Dedicado
+  products:
+    - API Gateway (DHuO)
+    - API Manager (DHuO)
+    - Developer Portal
+    - iPaaS
+    - Data Integration
+    - Lakehouse / BigQuery
+    - Pub/Sub (em validação)
+    - Dashboards (5)
+    - Modelos ML (2) + MLOps
+
+offers:
+  primary:
+    - id: api-journey
+      role: DHuO como API Manager corporativo — governança de ~150 APIs
+    - id: data-journey
+      role: Ingestão, lakehouse, histórico, streaming, catálogo
+    - id: ai-journey
+      role: 2 modelos preditivos + MLOps + dashboards analíticos
+
+contract:
+  processType: Pregão Eletrônico
+  processId: PE 1050/2026
+  object: Solução integrada para análise de dados de telemetria em nuvem
+  technicalProposal: "Proposta técnica Engineering — PE 1050/2026"
+
+dhuo:
+  role: Plataforma padrão de gestão e governança de APIs da SANEPAR
+  delivery: SaaS
+  rule: >
+    Todas as APIs da SANEPAR, independentemente do método HTTP, devem passar
+    pelo DHuO para governança, controle de acessos, volumetria e throughput.
+  forgeOffer: api-journey
+  tracks:
+    - id: analytical
+      name: Esteira Analítica
+      apisApprox: 21
+      methods: [GET]
+      feeds: [dashboards, lakehouse, ml]
+    - id: proxies
+      name: Esteira de Proxies / Governança
+      focus: Publicação e governança das demais APIs no DHuO
+      acceptanceHint: Conectividade e autenticação do endpoint
+
+apis:
+  estimatedCount: 150
+  analyticalInitialApprox: 21
+  proxiesApprox: 129
+  governance: DHuO
+  rule: >
+    Todas as APIs deverão passar pelo DHuO para governança, independentemente
+    de serem GET, POST ou outros métodos.
+  scopeNote: >
+    Consumir APIs existentes expostas pela SANEPAR; sem integração direta OT/SCADA
+    (CLP/RTU/controle). Sem margem para construção de APIs novas complexas.
+    CRN preliminar: 21 APIs mandatórias (5 dashboards + 2 ML) + 129 proxies.
+  goals:
+    - Controle de consumo
+    - Throughput
+    - Segurança
+    - Monitoramento
+    - Rate limiting
+    - Gestão de consumidores
+
+otInventory:
+  current:
+    equipment: 1352
+    historicalRecords: 30000000
+    historicalBaseSize: 1.5 GB
+    monthlyGenerationApprox: 8.1 GB/mês
+  projected:
+    equipment: 5000
+    monthlyGenerationApprox: 34.5 GB/mês
+    cumulativeY5ExpansionGb: 2070.0
+  volumeProjection:
+    source: Teams chat / sizing discussion
+    evidenceImage: assets/dossiers/volumetria-5anos.png
+    columns: [cargaHistorica, mensal, Y1, Y2, Y3, Y4, Y5]
+    rows:
+      - id: historical
+        label: Carga histórica (inicial)
+        note: ~30 milhões de medições atuais
+        cargaHistoricaGb: 1.5
+        mensalGb: null
+        accumulatedGb: [1.5, 1.5, 1.5, 1.5, 1.5]
+      - id: currentGeneration
+        label: Geração — cenário atual
+        note: Base mantida em 1.352 equipamentos
+        cargaHistoricaGb: null
+        mensalGb: 8.1
+        accumulatedGb: [97.2, 194.4, 291.6, 388.8, 486.0]
+      - id: expansionGeneration
+        label: Geração — cenário expansão
+        note: Parque expandido para 5.000 equipamentos
+        cargaHistoricaGb: null
+        mensalGb: 34.5
+        accumulatedGb: [414.0, 828.0, 1242.0, 1656.0, 2070.0]
+  sizing:
+    telemetryCallsPerMonth: 45000000
+    usnMaxPerMonth: 1600
+    biUsersPerYear: 15
+  sources:
+    - APIs corporativas e operacionais já expostas
+    - Historian REST API (candidata analítica — validar)
+    - Telemetria / sistemas correlatos via API
+
+analytics:
+  summary: >
+    Esteira analítica sobre APIs GET: Design Sprint, lakehouse, dashboards,
+    modelos ML, ingestão/streaming e carga histórica.
+  mlModels:
+    inScope: true
+    count: 2
+    purpose:
+      - Modelos preditivos sobre telemetria / operação
+    activities:
+      - Definição de variáveis e feature engineering
+      - Treino, validação, deploy e monitoramento
+      - MLOps (CI/CD, versionamento, drift, retreino)
+    ownerMentioned: Evair
+  dashboards:
+    inScope: true
+    count: 5
+    purpose:
+      - Dashboards operacionais (centro de controle)
+    biToolsUnderDiscussion: [Looker, Power BI]
+    biDefaultFromPt: Looker
+    biUsersPerYear: 15
+    licensingNotes:
+      - Embedding em portais SANEPAR pode exigir tipo específico de licença
+      - SSO Looker com pendências; Power BI como alternativa discutida
+  consumption:
+    - Dashboards / BI
+    - Integrações via APIs
+    - Resultados de modelos ML
+
+architecture:
+  model: SaaS Dedicado (DHuO) + GCP
+  twoTracks: true
+  contractSigned: "2026-06-30"
+  sustentacaoMeses: 24
+  schedule:
+    status: preliminar
+    source: ../timeline/CRN_ENG_OBS_SANEPAR_V0 1.xml
+    projectLabel: SANEPAR_PRELIMINAR_1050/26
+    start: "2026-07-01"
+    finish: "2027-03-24"
+    executionFinish: "2027-01-26"
+    baselineLabel: "Baseline V1: 22/07/2026"
+    disclaimer: >
+      Esforço/prazos especulativos até Design Sprints; nova versão após escopo real.
+    designSprint:
+      start: "2026-08-10"
+      finish: "2026-08-19"
+      milestones: [D1, D2, D3, D4, D5]
+    workstreams:
+      - {id: discovery, name: Discovery e Arquitetura, start: "2026-08-19", finish: "2026-09-03"}
+      - {id: ingest, name: Ingestão e Pipelines, start: "2026-09-04", finish: "2026-10-05", offer: data-journey}
+      - {id: apis, name: Integração e APIs (DHuO), start: "2026-10-06", finish: "2026-11-13", offer: api-journey}
+      - {id: mlops, name: Integração & MLOps, start: "2026-11-16", finish: "2026-12-07", offer: ai-journey}
+      - {id: gov, name: Governança e Segurança, start: "2026-12-08", finish: "2026-12-18", offer: data-journey}
+      - {id: bi, name: BI e Analytics, start: "2026-12-21", finish: "2027-01-04", offer: ai-journey}
+      - {id: golive, name: QA e Go Live, start: "2027-01-05", finish: "2027-01-26"}
+  preSalesDiagrams:
+    - file: Arquitetura_Sanepar_Dados_OT_v2 5.png
+      title: Arquitetura integrada GCP
+    - file: Sanepar_ZoomIN_Ingestao_v2 2.png
+      title: Zoom In — Ingestão e Streaming (TR 4.1.4)
+    - file: Sanepar_ZoomIN_ETL_v2 2.png
+      title: Zoom In — ETL/ELT (TR 4.1.5)
+  stack:
+    apiManager: DHuO
+    bi: Looker
+    streaming: [Pub/Sub, Dataflow, Confluent Cloud Kafka]
+    lakehouse: [GCS Bronze/Silver, BigQuery Gold]
+    transform: [Cloud Composer, Dataproc, dbt Core]
+    governance: Dataplex
+    ml: Vertex AI
+    genai: controlada (Studio, Model Garden, RAG, Guardrails)
+  documents:
+    - PT_Sanepar_PE1050_Engineering_v7 1.docx
+    - ENG_Alinhamento_Inicial_SANEPAR_PTBR.pdf
+    - SANEPAR-HISTORIAN-REST-API.docx.pdf
+    - SANEPAR_Preços e Ações.xlsx
+    - ANEXOIITR105026.PDF
+  characteristics:
+    - Projeto GCP / landing zone SANEPAR existente
+    - DHuO SaaS dedicado (API Journey)
+    - Ambientes DEV / HML / PROD isolados
+    - Separação esteira analítica vs proxies
+    - Streaming e ETL fully managed (TR 4.1.4 / 4.1.5)
+  environments:
+    production: Ambiente produtivo
+    nonProduction:
+      mode: Segregação lógica (projetos/VPCs isolados)
+      includes: [Desenvolvimento, Homologação]
+  logicalFlow: >
+    Fontes OT/APIs → VPN/Interconnect → DHuO (Gateway/Manager) →
+    Pub/Sub+Dataflow+Kafka | Collectors → Composer/Dataproc/dbt →
+    Lakehouse B/S/G → Looker + Vertex ML/GenAI
+
+connectivity:
+  requirement: VPN Site-to-Site SANEPAR ⇄ Engineering/DHuO/GCP
+  statusNotes:
+    - Setup cloud GCP pronto do lado Engineering; VPN pelo cliente pendente (daily)
+    - Necessário VPC, subnet, peer e rede antes do formulário VPN
+  alternatives:
+    - id: ha-vpn
+      name: HA VPN
+      profile: implementação rápida; custo menor
+    - id: psc
+      name: Private Service Connect (PSC)
+      profile: aderente se LZ GCP existente
+    - id: interconnect
+      name: Cloud Interconnect
+      profile: alta capacidade; maior complexidade/custo
+
+historianApi:
+  document: SANEPAR-HISTORIAN-REST-API.docx.pdf
+  purpose: API para dispositivo, tag/ponto e medições de telemetria
+  flow:
+    - Cadastro do dispositivo
+    - Cadastro da Tag
+    - Envio de medições
+  auth:
+    type: user-key
+    via: HTTP header
+  roleNote: >
+    Candidata à esteira analítica; validar se está entre as ~21 APIs GET e se
+    é fonte principal ou complementar.
+
+security:
+  sso: Ambiente IDP da SANEPAR (OIDC/OAuth2 ou SAML v2)
+  forbidPasswordGrant: true
+  noPasswordStorageByVendor: true
+
+traceability:
+  capabilityIds:
+    - CAP-D1-01
+    - CAP-D1-02
+    - CAP-D1-03
+    - CAP-D2-01
+    - CAP-D2-02
+    - CAP-D5-02
+    - CAP-D10-01
+    - CAP-D10-03
+    - CAP-D10-04
+    - CAP-D11-01
+  offerIds:
+    - api-journey
+    - data-journey
+    - ai-journey
+
+premises:
+  - DHuO é a plataforma corporativa de API Management (API Journey)
+  - Duas esteiras: analítica (GET) e proxies (governança)
+  - Sem integração direta OT/SCADA de controle
+  - Pub/Sub proposto como desacoplamento — validar formalmente
+  - Deploy elástico (menor tier inicial; monitorar USNs)
+
+risks:
+  - id: R1
+    title: Contratos técnicos das APIs GET incompletos
+    evidence: Aceite de dashboards/ML depende dos contratos das ~21 APIs analíticas
+  - id: R2
+    title: Misturar aceite analítico com proxies operacionais
+    evidence: Pendências de proxies não devem travar dashboards/ML
+  - id: R3
+    title: Conectividade VPN
+    evidence: VPC/subnet/peer e fechamento VPN pelo cliente
+  - id: R4
+    title: Sizing e custos ociosos
+    evidence: Timing de infra vs faturamento; USNs
+  - id: R5
+    title: Licenciamento Looker / BI
+    evidence: Embedding, SSO, compras
+  - id: R6
+    title: Definição incompleta dos demais dashboards e ML
+    evidence: Clareza no 1º painel; faltam demais painéis e 2 modelos
+
+currentPhase:
+  items:
+    - Separação esteira analítica vs proxies DHuO
+    - Contratos das APIs GET analíticas
+    - Fechamento VPN
+    - Definição dos 5 dashboards e 2 modelos ML
+    - Validação Pub/Sub / ingestão
+    - Licenciamento BI
+  recentDocuments:
+    - dossie_tecnico_sanepar_dados_ia.md
+    - SANEPAR-HISTORIAN-REST-API.docx.pdf
+
+executiveConclusion: >
+  Projeto de gestão de APIs (DHuO / API Journey), engenharia de dados (Data Journey)
+  e analytics/IA (AI Journey) em GCP. Decisão-chave de HLD: separar esteira analítica
+  (APIs GET → Pub/Sub → lakehouse → 5 dashboards + 2 ML) da esteira de proxies no DHuO
+  (~150 APIs governadas).

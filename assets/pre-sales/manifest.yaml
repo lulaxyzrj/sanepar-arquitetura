@@ -1,0 +1,115 @@
+# SANEPAR pre-sales / RFP artifact catalog (PE 1050/2026)
+id: sanepar-pre-sales-pe1050
+customer: sanepar
+process: PE 1050/2026
+updatedAt: "2026-07-24"
+
+artifacts:
+  - id: pt-v7
+    type: proposta_tecnica
+    file: PT_Sanepar_PE1050_Engineering_v7 1.docx
+    date: "2026-05-05"
+    authors:
+      technical: Anderson Machado
+      commercial: Marcelo Oliveira
+    summary: >
+      Proposta técnica Engineering — solução integrada de análise de dados de
+      telemetria em nuvem. DHuO como integração/API management, GCP, Looker,
+      Kubernetes para streaming/transformação. Cloud-first, governada by design.
+
+  - id: alinhamento-inicial
+    type: apresentacao
+    file: ENG_Alinhamento_Inicial_SANEPAR_PTBR.pdf
+    date: "2026-07"
+    summary: >
+      Alinhamento inicial pós-contrato (assinado 30/06/2026): mobilização, equipe,
+      governança, dependências críticas, inventário de ~150 APIs, próximos passos
+      e Design Sprint.
+    extract: _extract_alinhamento.md
+
+  - id: conectividade-v1
+    type: diagrama_conectividade
+    file: sanepar-conectividade-v1 2.pdf
+    summary: >
+      Documento de conectividade SANEPAR ⇄ GCP/DHuO (PDF com stream truncado no
+      extrator — manter como evidência binária; validar texto via ferramenta nativa).
+    parseStatus: truncated_pdf
+
+  - id: arch-ot-v2
+    type: diagrama_arquitetura
+    file: Arquitetura_Sanepar_Dados_OT_v2 5.png
+    title: Arquitetura GCP — Dados, Analytics e IA (visão integrada)
+    summary: >
+      On-prem OT/APIs → VPN/Interconnect → DHuO (API Gateway/orquestração) →
+      GCP (DEV/HML/PROD isolados): ingestão, lakehouse Bronze/Silver/Gold,
+      processamento, Dataplex, MLOps/Vertex + GenAI controlada, consumo Looker/APIs.
+
+  - id: zoom-ingestao
+    type: diagrama_zoom
+    file: Sanepar_ZoomIN_Ingestao_v2 2.png
+    title: Zoom In — Ingestão e Streaming
+    trRef: TR 4.1.4
+    summary: >
+      Streaming gerenciado: Pub/Sub → Dataflow → Kafka Confluent Cloud (GKE Autopilot).
+      Batch/APIs via DHuO REST/GraphQL, Transfer Appliance/Service. Sem risco
+      operacional transferido à SANEPAR.
+
+  - id: zoom-etl
+    type: diagrama_zoom
+    file: Sanepar_ZoomIN_ETL_v2 2.png
+    title: Zoom In — Processamento ETL/ELT
+    trRef: TR 4.1.5
+    summary: >
+      Cloud Composer → Dataproc (Spark gerenciado) → dbt Core ephemeral (GKE Autopilot)
+      → BigQuery Bronze/Silver/Gold. Modelo fully managed (GCP + Engineering).
+
+  - id: dossie-md
+    type: dossie
+    file: dossie_tecnico_sanepar_dados_ia.md
+    note: Cópia/espelho — canônico em ../dossiers/dossie_tecnico_sanepar_dados_ia.md
+
+stackHighlight:
+  apiManager: DHuO
+  forgeOffer: api-journey
+  cloud: GCP
+  bi: Looker
+  streaming: [Pub/Sub, Dataflow, Confluent Cloud Kafka]
+  lakehouse: [Cloud Storage Bronze/Silver, BigQuery Gold]
+  transform: [Dataproc, dbt Core, Cloud Composer]
+  governance: [Dataplex, Data Catalog, Lineage, Policy Tags LGPD]
+  ml: [Vertex AI Feature Store, Pipelines, Endpoints, Monitoring]
+  genai: [Gen AI Studio, Model Garden, Vertex AI Search/RAG, Guardrails]
+  security: [SSO SAML/OIDC, IAM/RBAC, CMEK, VPC-SC, DLP]
+  observability: [Cloud Monitoring, Logging, Trace, SIEM]
+  finops: [Billing export BigQuery, Budgets]
+
+contractMilestones:
+  signed: "2026-06-30"
+  sustentacaoMeses: 24
+
+teamInitial:
+  - role: Senior Project Manager
+    name: Rodrigo Medici
+  - role: Arquiteto de Soluções / Tech Lead
+    name: Luiz Henrique Gomes De Souza
+  - role: Infra, Cyber, DevOps
+    name: Fabricio Eduardo Garrido Pellizon
+  - role: Gestão de Conta
+    name: Anderson Machado
+  - role: Gestão Delivery IA
+    name: Rudinei André Welter
+  - role: Times
+    name: Dados, APIs, BI, MLOps (em definição)
+
+apiInventoryExpectedFields:
+  - Nome da API
+  - Sistema origem
+  - Responsável técnico
+  - Criticidade
+  - Endpoint
+  - Swagger/OpenAPI
+  - Método de autenticação
+  - Volumetria
+  - Dependências
+  - SLA
+  - Regras de conectividade

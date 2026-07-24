@@ -1,0 +1,16 @@
+id: sanepar-telemetria-dhuo
+displayName: SANEPAR — Dados & IA / DHuO API Manager (PE 1050/2026)
+customer: sanepar
+offers:
+  - api-journey   # DHuO = API Manager corporativo
+  - data-journey
+  - ai-journey
+engagementType: evolucao
+packs:
+  - capabilities
+  - dossiers
+  - timeline
+cloud: gcp
+ceaOverride: false
+output:
+  docsDir: docs
