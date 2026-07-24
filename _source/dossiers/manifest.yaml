@@ -1,8 +1,8 @@
 # Technical dossiers — real engagement projects (not generic journey marketing).
 pages:
   - file: arquitetura-proposta.html
-    title: Arquitetura Proposta - GCP + DHuO
-    navLabel: Arquitetura Proposta - GCP + DHuO
+    title: Arquitetura Preliminar Pre-Design Sprint - GCP + DHuO
+    navLabel: Arquitetura Preliminar Pre-Design Sprint - GCP + DHuO
     icon: workflow
     order: 20
   - file: dossie-telemetria.html

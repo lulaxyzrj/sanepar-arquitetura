@@ -14,7 +14,7 @@ python3 -m http.server 8080
 Principais páginas:
 
 - [Visão Geral](index.html)
-- [Arquitetura Proposta - GCP + DHuO](arquitetura-proposta.html)
+- [Arquitetura Preliminar Pre-Design Sprint - GCP + DHuO](arquitetura-proposta.html)
 - [Dossiê Dados & IA](dossie-telemetria.html)
 - [Cronograma PE 1050](cronograma-pe1050.html)
 - [Data](data-journey.html) · [API](api-journey.html) · [AI](ai-journey.html) Journey
